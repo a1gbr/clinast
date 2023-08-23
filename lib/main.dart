@@ -13,7 +13,8 @@ class MyApp extends StatelessWidget {
       title: 'Clinic Management Assistant',
       theme: ThemeData(
           useMaterial3: true,
-          colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.teal)),
+          colorScheme: ColorScheme.fromSwatch(
+              primarySwatch: Colors.teal /*cor principal, temporaria*/)),
       home: const MyHomePage(),
     );
   }
@@ -27,10 +28,12 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  // _selectedIndex representa o valor que será usado para diferenciar qual página deve ser exibida
   var _selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
     Widget page;
+    // recebendo o valor do index e referenciando qual página deve ser representada pelo widget 'page'
     switch (_selectedIndex) {
       case 0:
         page = const ResumoPage();
@@ -97,9 +100,9 @@ class _MyHomePageState extends State<MyHomePage> {
                     label: Text('P A G A M E N T O S'),
                   ),
                 ],
-                onDestinationSelected: (int index) {
+                onDestinationSelected: (value) {
                   setState(() {
-                    _selectedIndex = index;
+                    _selectedIndex = value;
                   });
                 },
                 selectedIconTheme: const IconThemeData(color: Colors.white),
@@ -111,6 +114,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             Expanded(
               child: Container(
+                // page agr é uma referencia para o statelesswidget q foi construida a pagina desejada
                 child: page,
               ),
             ),
@@ -126,8 +130,9 @@ class ResumoPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // construcao da pagina aqui
     return const Center(
-      child: Text("PAGINA RESUMO"),
+      child: Text("PAGINA RESUMO EM BRANCO"),
     );
   }
 }
@@ -137,8 +142,9 @@ class ConsultasPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // construcao da pagina aqui
     return const Center(
-      child: Text("PAGINA CONSULTAS"),
+      child: Text("PAGINA CONSULTAS EM BRANCO"),
     );
   }
 }
@@ -148,8 +154,9 @@ class PacientesPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // construcao da pagina aqui
     return const Center(
-      child: Text("PAGINA PACIENTES"),
+      child: Text("PAGINA PACIENTES EM BRANCO"),
     );
   }
 }
@@ -159,8 +166,9 @@ class DoutoresPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // construcao da pagina aqui
     return const Center(
-      child: Text("PAGINA DOUTORES"),
+      child: Text("PAGINA DOUTORES EM BRANCO"),
     );
   }
 }
@@ -170,8 +178,9 @@ class FuncionariosPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // construcao da pagina aqui
     return const Center(
-      child: Text("PAGINA FUNCIONARIOS"),
+      child: Text("PAGINA FUNCIONARIOS EM BRANCO"),
     );
   }
 }
@@ -181,8 +190,9 @@ class PagamentosPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // construcao da pagina aqui
     return const Center(
-      child: Text("PAGINA PAGAMENTOS"),
+      child: Text("PAGINA PAGAMENTOS EM BRANCO"),
     );
   }
 }
