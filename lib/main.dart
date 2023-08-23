@@ -30,29 +30,29 @@ class _MyHomePageState extends State<MyHomePage> {
   var _selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
-    /*Widget page;
+    Widget page;
     switch (_selectedIndex) {
       case 0:
-        page = ResumoPage();
+        page = const ResumoPage();
         break;
       case 1:
-        page = ResumoPage();
+        page = const ConsultasPage();
         break;
       case 2:
-        page = ResumoPage();
+        page = const PacientesPage();
         break;
       case 3:
-        page = ResumoPage();
+        page = const DoutoresPage();
         break;
       case 4:
-        page = ResumoPage();
+        page = const FuncionariosPage();
         break;
       case 5:
-        page = ResumoPage();
+        page = const PagamentosPage();
         break;
       default:
         throw UnimplementedError("No widget for $_selectedIndex");
-    }*/
+    }
     return LayoutBuilder(builder: (context, constraints) {
       return Scaffold(
         body: Row(
@@ -108,13 +108,79 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
             Expanded(
-              child: Center(
-                child: Text('PAGE #: $_selectedIndex'),
+              child: Container(
+                child: page,
               ),
             ),
           ],
         ),
       );
     });
+  }
+}
+
+class ResumoPage extends StatelessWidget {
+  const ResumoPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const Center(
+      child: Text("PAGINA RESUMO"),
+    );
+  }
+}
+
+class ConsultasPage extends StatelessWidget {
+  const ConsultasPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const Center(
+      child: Text("PAGINA CONSULTAS"),
+    );
+  }
+}
+
+class PacientesPage extends StatelessWidget {
+  const PacientesPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const Center(
+      child: Text("PAGINA PACIENTES"),
+    );
+  }
+}
+
+class DoutoresPage extends StatelessWidget {
+  const DoutoresPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const Center(
+      child: Text("PAGINA DOUTORES"),
+    );
+  }
+}
+
+class FuncionariosPage extends StatelessWidget {
+  const FuncionariosPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const Center(
+      child: Text("PAGINA FUNCIONARIOS"),
+    );
+  }
+}
+
+class PagamentosPage extends StatelessWidget {
+  const PagamentosPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const Center(
+      child: Text("PAGINA PAGAMENTOS"),
+    );
   }
 }
