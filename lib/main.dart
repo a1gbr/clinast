@@ -68,6 +68,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     icon: Icon(Icons.dashboard_outlined),
                     selectedIcon: Icon(Icons.dashboard),
                     label: Text('R E S U M O'),
+                    padding: EdgeInsets.fromLTRB(0, 0, 0, 32),
                   ),
                   NavigationRailDestination(
                     icon: Icon(Icons.monitor_heart_outlined),
@@ -83,6 +84,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     icon: Icon(Icons.local_hospital_outlined),
                     selectedIcon: Icon(Icons.local_hospital),
                     label: Text('D O U T O R E S'),
+                    padding: EdgeInsets.fromLTRB(0, 0, 0, 32),
                   ),
                   NavigationRailDestination(
                     icon: Icon(Icons.badge_outlined),
