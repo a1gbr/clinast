@@ -1,3 +1,4 @@
+import 'package:clinast/widgets/titulo_pagina.dart';
 import 'package:flutter/material.dart';
 
 class PacientesPage extends StatelessWidget {
@@ -5,9 +6,16 @@ class PacientesPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // construcao da pagina aqui
-    return const Center(
-      child: Text("PAGINA PACIENTES EM BRANCO"),
+    return const Column(
+      children: <Widget>[
+        TituloPagina(),
+        Expanded(
+            child: Center(
+                child: Text(
+          "TABELA PACIENTES AQUI!",
+          style: TextStyle(fontSize: 48),
+        )))
+      ],
     );
   }
 }
