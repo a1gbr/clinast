@@ -1,4 +1,3 @@
-import 'package:clinast/strings/strings.dart';
 import 'package:flutter/material.dart';
 
 class TituloPagina extends StatelessWidget {
@@ -9,6 +8,8 @@ class TituloPagina extends StatelessWidget {
     final ButtonStyle style =
         ElevatedButton.styleFrom(textStyle: const TextStyle(fontSize: 20));
     const TextStyle botaoStyle = TextStyle(fontSize: 18);
+    const tituloPagina = "TITULO PAGINA";
+    const descricaoPagina = "DESCRICAO DA PAGINA";
     return Row(
       children: <Widget>[
         Expanded(
@@ -44,7 +45,7 @@ class TituloPagina extends StatelessWidget {
                       ),
                       Padding(padding: EdgeInsets.all(2)),
                       Text(
-                        textoBotaoExportar,
+                        "Exportar",
                         style: botaoStyle,
                       ),
                     ],
@@ -61,7 +62,7 @@ class TituloPagina extends StatelessWidget {
                       ),
                       Padding(padding: EdgeInsets.all(2)),
                       Text(
-                        textoBotaoAdicionar,
+                        "Novo Item",
                         style: botaoStyle,
                       ),
                     ],
