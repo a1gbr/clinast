@@ -1,3 +1,4 @@
+import 'package:clinast/widgets/tabela.dart';
 import 'package:clinast/widgets/titulo_pagina.dart';
 import 'package:flutter/material.dart';
 
@@ -6,16 +7,21 @@ class PagamentosPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
-      children: <Widget>[
-        TituloPagina(),
-        Expanded(
-            child: Center(
-                child: Text(
-          "TABELA PAGAMENTOS AQUI!",
-          style: TextStyle(fontSize: 48),
-        )))
-      ],
+    return Container(
+      padding: const EdgeInsets.all(16),
+      child: const Column(
+        children: <Widget>[
+          TituloPagina(),
+          SizedBox(height: 16),
+          Expanded(
+            child: Column(
+              children: [
+                Tabela(),
+              ],
+            ),
+          )
+        ],
+      ),
     );
   }
 }
