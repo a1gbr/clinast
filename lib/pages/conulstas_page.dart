@@ -1,4 +1,5 @@
-import 'package:clinast/widgets/tabela.dart';
+import 'package:clinast/widgets/item_listagem.dart';
+import 'package:clinast/widgets/menu_tabela.dart';
 import 'package:clinast/widgets/titulo_pagina.dart';
 import 'package:flutter/material.dart';
 
@@ -16,7 +17,26 @@ class ConsultasPage extends StatelessWidget {
           Expanded(
             child: Column(
               children: [
-                Tabela(),
+                MenuTabela("Cod", "Nome", "Médico", 'Consulta/Exame', "Data",
+                    "Horário", 'Status'),
+                ItemListagem("00", "JOHN DOE", 'FRANCIS', 'ULTRASSONOGRAFIA',
+                    '11/12', '18:00', 'CONFIRMADA'),
+                ItemListagem("00", "JOHN HAKUNA", 'MARKINHAS', 'CONSULTA',
+                    '24/10', '18:00', 'PENDENTE'),
+                ItemListagem("00", "JOHN DOE", 'FRANCIS', 'ULTRASSONOGRAFIA',
+                    '11/12', '18:00', 'CONFIRMADA'),
+                ItemListagem("00", "JOHN HAKUNA", 'MARKINHAS', 'CONSULTA',
+                    '24/10', '18:00', 'PENDENTE'),
+                ItemListagem("00", "JOHN DOE", 'FRANCIS', 'ULTRASSONOGRAFIA',
+                    '11/12', '18:00', 'CONFIRMADA'),
+                ItemListagem("00", "JOHN HAKUNA", 'MARKINHAS', 'CONSULTA',
+                    '24/10', '18:00', 'PENDENTE'),
+                ItemListagem("00", "JOHN DOE", 'FRANCIS', 'ULTRASSONOGRAFIA',
+                    '11/12', '18:00', 'CONFIRMADA'),
+                ItemListagem("00", "JOHN HAKUNA", 'MARKINHAS', 'CONSULTA',
+                    '24/10', '18:00', 'PENDENTE'),
+                ItemListagem("00", "JOHN DOE", 'FRANCIS', 'ULTRASSONOGRAFIA',
+                    '11/12', '18:00', 'CONFIRMADA'),
               ],
             ),
           )

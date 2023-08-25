@@ -1,4 +1,3 @@
-import 'package:clinast/widgets/tabela.dart';
 import 'package:clinast/widgets/titulo_pagina.dart';
 import 'package:flutter/material.dart';
 
@@ -15,9 +14,7 @@ class DoutoresPage extends StatelessWidget {
           SizedBox(height: 16),
           Expanded(
             child: Column(
-              children: [
-                Tabela(),
-              ],
+              children: [],
             ),
           )
         ],

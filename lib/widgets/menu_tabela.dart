@@ -1,6 +1,7 @@
+import 'package:clinast/widgets/style/tabela_style.dart';
 import 'package:flutter/material.dart';
 
-class MenuTabela extends StatefulWidget {
+class MenuTabela extends StatelessWidget {
   const MenuTabela(
       this.tituloId,
       this.tituloPrimario,
@@ -20,49 +21,47 @@ class MenuTabela extends StatefulWidget {
   final String tituloStatus;
 
   @override
-  State<MenuTabela> createState() => _MenuTabelaState();
-}
-
-class _MenuTabelaState extends State<MenuTabela> {
-  @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 4),
-      margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-      decoration: const BoxDecoration(
-        borderRadius: BorderRadius.all(Radius.circular(20)),
-        color: Colors.white12,
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: <Widget>[
-          Text(
-            widget.tituloId,
-          ),
-          Text(
-            widget.tituloPrimario,
-          ),
-          Text(
-            widget.tituloSecundario,
-          ),
-          Text(
-            widget.tituloTipagem,
-          ),
-          Text(
-            widget.tituloInfo,
-          ),
-          Text(
-            widget.tituloComplementar,
-          ),
-          Text(
-            widget.tituloStatus,
-          ),
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 28, vertical: 0),
-            child: const Text("Ações"),
-          ),
-        ],
+    return Center(
+      child: Padding(
+        padding: tablePadding,
+        child: Table(
+          columnWidths: tableStyling,
+          border: const TableBorder(
+              bottom: BorderSide(width: 1, color: Colors.black)),
+          defaultVerticalAlignment: TableCellVerticalAlignment.middle,
+          children: [
+            TableRow(children: [
+              TableCell(child: Center(child: Text(tituloId, style: textStyle))),
+              TableCell(
+                  child: Center(child: Text(tituloPrimario, style: textStyle))),
+              TableCell(
+                  child:
+                      Center(child: Text(tituloSecundario, style: textStyle))),
+              TableCell(
+                  child: Center(child: Text(tituloTipagem, style: textStyle))),
+              TableCell(
+                  child: Center(child: Text(tituloInfo, style: textStyle))),
+              TableCell(
+                  child: Center(
+                      child: Text(tituloComplementar, style: textStyle))),
+              TableCell(
+                  child: Center(child: Text(tituloStatus, style: textStyle))),
+              const TableCell(
+                  child: Center(
+                      child: Text(
+                "Ações",
+                style: textStyle,
+              ))),
+            ])
+          ],
+        ),
       ),
     );
   }
 }
+
+/**Container(
+            padding: const EdgeInsets.symmetric(horizontal: 28, vertical: 0),
+            child: const Text("Ações"),
+          ), */
