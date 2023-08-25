@@ -6,16 +6,16 @@ class ResumoPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
-      children: <Widget>[
-        TituloPagina(),
-        Expanded(
-            child: Center(
-                child: Text(
-          "DASHBOARD AQUI!",
-          style: TextStyle(fontSize: 48),
-        )))
-      ],
+    return Container(
+      padding: const EdgeInsets.all(16),
+      child: const Column(
+        children: <Widget>[
+          TituloPagina("RESUMO", "Painel de Controle."),
+          Expanded(
+            child: Center(child: Text("DASHBOARD")),
+          )
+        ],
+      ),
     );
   }
 }

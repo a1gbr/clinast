@@ -1,30 +1,31 @@
 import 'package:flutter/material.dart';
 
 class TituloPagina extends StatelessWidget {
-  const TituloPagina({super.key});
+  const TituloPagina(this.tituloPagina, this.descricaoPagina, {super.key});
+  final String tituloPagina;
+  final String descricaoPagina;
 
   @override
   Widget build(BuildContext context) {
     final ButtonStyle style =
         ElevatedButton.styleFrom(textStyle: const TextStyle(fontSize: 20));
     const TextStyle botaoStyle = TextStyle(fontSize: 18);
-    const tituloPagina = "TITULO PAGINA";
-    const descricaoPagina = "DESCRICAO DA PAGINA";
     return Row(
       children: <Widget>[
         Expanded(
           child: Container(
             padding: const EdgeInsets.all(8),
-            child: const Column(
+            child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Text(
                   tituloPagina,
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
+                  style: const TextStyle(
+                      fontWeight: FontWeight.bold, fontSize: 24),
                 ),
                 Text(
                   descricaoPagina,
-                  style: TextStyle(fontWeight: FontWeight.w500),
+                  style: const TextStyle(fontWeight: FontWeight.w500),
                 ),
               ],
             ),
@@ -37,7 +38,9 @@ class TituloPagina extends StatelessWidget {
               children: <Widget>[
                 ElevatedButton(
                   style: style,
-                  onPressed: () {},
+                  onPressed: (
+                      // exportar .csv .json com os item-da-tabela exibida
+                      ) {},
                   child: const Row(
                     children: [
                       Icon(
@@ -54,7 +57,9 @@ class TituloPagina extends StatelessWidget {
                 const SizedBox(width: 8),
                 ElevatedButton(
                   style: style,
-                  onPressed: () {},
+                  onPressed: (
+                      // abrir o modal
+                      ) {},
                   child: const Row(
                     children: [
                       Icon(
