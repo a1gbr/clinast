@@ -1,4 +1,7 @@
+import 'package:clinast/widgets/style/tabela_style.dart';
 import 'package:flutter/material.dart';
+
+import 'menu_acoes_tabela.dart';
 
 class ItemListagem extends StatefulWidget {
   const ItemListagem(
@@ -10,6 +13,7 @@ class ItemListagem extends StatefulWidget {
       this.textoComplementar,
       this.textoStatus,
       {super.key});
+
   final String id;
   final String textoPrimario;
   final String textoSecundario;
@@ -17,6 +21,7 @@ class ItemListagem extends StatefulWidget {
   final String textoInfo;
   final String textoComplementar;
   final String textoStatus;
+
   @override
   State<ItemListagem> createState() => _ItemListagemState();
 }
@@ -24,69 +29,39 @@ class ItemListagem extends StatefulWidget {
 class _ItemListagemState extends State<ItemListagem> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 4),
-      margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-      decoration: const BoxDecoration(
-        borderRadius: BorderRadius.all(Radius.circular(20)),
-        color: Colors.white54,
-      ),
-      child: Row(
-        // NECESSARIO REAJUSTAR AS POSICOES, TALVEZ COLOCAR UM VALOR MAXIMO USANDO UM CONTAINER EM CADA TEXTO
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: <Widget>[
-          Text(
-            widget.id,
-          ),
-          Text(
-            widget.textoPrimario,
-          ),
-          Text(
-            widget.textoSecundario,
-          ),
-          Text(
-            widget.textoTipagem,
-          ),
-          Text(
-            widget.textoInfo,
-          ),
-          Text(
-            widget.textoComplementar,
-          ),
-          Text(
-            widget.textoStatus,
-          ),
-          Row(
+    return SizedBox(
+      height: 32,
+      child: Padding(
+        padding: tablePadding,
+        child: Table(
+            columnWidths: tableStyling,
+            defaultVerticalAlignment: TableCellVerticalAlignment.middle,
             children: [
-              FilledButton(
-                onPressed: () {},
-                style: const ButtonStyle(
-                    backgroundColor: MaterialStatePropertyAll(Colors.green),
-                    fixedSize: MaterialStatePropertyAll(Size(24, 24)),
-                    minimumSize: MaterialStatePropertyAll(Size(10, 10))),
-                child: null,
-              ),
-              const SizedBox(width: 8),
-              FilledButton(
-                onPressed: () {},
-                style: const ButtonStyle(
-                    backgroundColor: MaterialStatePropertyAll(Colors.amber),
-                    fixedSize: MaterialStatePropertyAll(Size(24, 24)),
-                    minimumSize: MaterialStatePropertyAll(Size(10, 10))),
-                child: null,
-              ),
-              const SizedBox(width: 8),
-              FilledButton(
-                onPressed: () {},
-                style: const ButtonStyle(
-                    backgroundColor: MaterialStatePropertyAll(Colors.red),
-                    fixedSize: MaterialStatePropertyAll(Size(24, 24)),
-                    minimumSize: MaterialStatePropertyAll(Size(10, 10))),
-                child: null,
-              ),
-            ],
-          ),
-        ],
+              TableRow(children: [
+                TableCell(
+                  child: Center(child: Text(widget.id)),
+                ),
+                TableCell(
+                  child: Center(child: Text(widget.textoPrimario)),
+                ),
+                TableCell(
+                  child: Center(child: Text(widget.textoSecundario)),
+                ),
+                TableCell(
+                  child: Center(child: Text(widget.textoTipagem)),
+                ),
+                TableCell(
+                  child: Center(child: Text(widget.textoInfo)),
+                ),
+                TableCell(
+                  child: Center(child: Text(widget.textoComplementar)),
+                ),
+                TableCell(
+                  child: Center(child: Text(widget.textoStatus)),
+                ),
+                const TableCell(child: MenuAcoesTabela())
+              ])
+            ]),
       ),
     );
   }
