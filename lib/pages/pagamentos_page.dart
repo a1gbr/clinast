@@ -11,7 +11,7 @@ class PagamentosPage extends StatelessWidget {
       padding: const EdgeInsets.all(16),
       child: const Column(
         children: <Widget>[
-          TituloPagina(),
+          TituloPagina("PAGAMENTOS", "Lista de pagamentos:"),
           SizedBox(height: 16),
           Expanded(
             child: Column(

@@ -11,7 +11,7 @@ class ConsultasPage extends StatelessWidget {
       padding: const EdgeInsets.all(16),
       child: const Column(
         children: <Widget>[
-          TituloPagina(),
+          TituloPagina("CONSULTAS", "Lista de consultas:"),
           SizedBox(height: 16),
           Expanded(
             child: Column(

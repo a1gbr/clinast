@@ -14,22 +14,27 @@ class Tabela extends StatelessWidget {
           borderRadius: BorderRadius.circular(20), color: Colors.white24),
       child: const Column(
         children: [
-          MenuTabela(),
+          MenuTabela(
+              '#', "Nome", "Doutor", "Tipo", 'Data', 'Horário', 'Status'),
           // AQUI DEVE SER REFATORADO PRA LISTVIEW
           // ELEMENTO QUE PERMITE SCROLLAR OS ITENS
           // ITENS NAO DEVEM SER MANUALMENTE INSERIDOS, E SIM USADO RECURSIVIDADE PRA RECEBER DADOS DO BD OU JSON/CSV <- DEVE SER DISCUTIDO
-          ItemListagem(),
-          ItemListagem(),
-          ItemListagem(),
-          ItemListagem(),
-          ItemListagem(),
-          ItemListagem(),
-          ItemListagem(),
-          ItemListagem(),
-          ItemListagem(),
-          ItemListagem(),
-          ItemListagem(),
-          ItemListagem(),
+          ItemListagem("01", "John Doe", "Dr. Francis", "Consulta", "24/10",
+              "18:00", "Marcada"),
+          ItemListagem("01", "John Doe", "Dr. Francis", "Consulta", "24/10",
+              "18:00", "Pago"),
+          ItemListagem("01", "John Doe", "Dr. Francis", "Consulta", "24/10",
+              "18:00", "Pendente"),
+          ItemListagem("01", "John Doe", "Dr. Francis", "Consulta", "24/10",
+              "11:45", "Pago"),
+          ItemListagem("01", "John Doe", "Dr. Francis", "Consulta", "24/10",
+              "14:00", "Marcada"),
+          ItemListagem("01", "John Doe", "Dr. Francis", "Consulta", "24/10",
+              "17:30", "Pendente"),
+          ItemListagem("01", "John Doe", "Dr. Francis", "Consulta", "24/10",
+              "19:00", "Marcada"),
+          ItemListagem("01", "John Doe", "Dr. Francis", "Consulta", "24/10",
+              "22:00", "Pago"),
         ],
       ),
     );

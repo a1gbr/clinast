@@ -1,8 +1,27 @@
 import 'package:flutter/material.dart';
 
-class ItemListagem extends StatelessWidget {
-  const ItemListagem({super.key});
+class ItemListagem extends StatefulWidget {
+  const ItemListagem(
+      this.id,
+      this.textoPrimario,
+      this.textoSecundario,
+      this.textoTipagem,
+      this.textoInfo,
+      this.textoComplementar,
+      this.textoStatus,
+      {super.key});
+  final String id;
+  final String textoPrimario;
+  final String textoSecundario;
+  final String textoTipagem;
+  final String textoInfo;
+  final String textoComplementar;
+  final String textoStatus;
+  @override
+  State<ItemListagem> createState() => _ItemListagemState();
+}
 
+class _ItemListagemState extends State<ItemListagem> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -13,38 +32,31 @@ class ItemListagem extends StatelessWidget {
         color: Colors.white54,
       ),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        // NECESSARIO REAJUSTAR AS POSICOES, TALVEZ COLOCAR UM VALOR MAXIMO USANDO UM CONTAINER EM CADA TEXTO
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
-          const Text(
-            "ID",
-            textAlign: TextAlign.center,
+          Text(
+            widget.id,
           ),
-          const Text(
-            "Paciente",
-            textAlign: TextAlign.center,
+          Text(
+            widget.textoPrimario,
           ),
-          const Text(
-            "Doutor",
-            textAlign: TextAlign.center,
+          Text(
+            widget.textoSecundario,
           ),
-          const Text(
-            "Consulta/Exame",
-            textAlign: TextAlign.center,
+          Text(
+            widget.textoTipagem,
           ),
-          const Text(
-            "Data",
-            textAlign: TextAlign.center,
+          Text(
+            widget.textoInfo,
           ),
-          const Text(
-            "Hora",
-            textAlign: TextAlign.center,
+          Text(
+            widget.textoComplementar,
           ),
-          const Text(
-            "Status",
-            textAlign: TextAlign.center,
+          Text(
+            widget.textoStatus,
           ),
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               FilledButton(
                 onPressed: () {},

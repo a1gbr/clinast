@@ -1,8 +1,29 @@
 import 'package:flutter/material.dart';
 
-class MenuTabela extends StatelessWidget {
-  const MenuTabela({super.key});
+class MenuTabela extends StatefulWidget {
+  const MenuTabela(
+      this.tituloId,
+      this.tituloPrimario,
+      this.tituloSecundario,
+      this.tituloTipagem,
+      this.tituloInfo,
+      this.tituloComplementar,
+      this.tituloStatus,
+      {super.key});
 
+  final String tituloId;
+  final String tituloPrimario;
+  final String tituloSecundario;
+  final String tituloTipagem;
+  final String tituloInfo;
+  final String tituloComplementar;
+  final String tituloStatus;
+
+  @override
+  State<MenuTabela> createState() => _MenuTabelaState();
+}
+
+class _MenuTabelaState extends State<MenuTabela> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -13,38 +34,31 @@ class MenuTabela extends StatelessWidget {
         color: Colors.white12,
       ),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
-          const Text(
-            "ID",
-            textAlign: TextAlign.center,
+          Text(
+            widget.tituloId,
           ),
-          const Text(
-            "Paciente",
-            textAlign: TextAlign.center,
+          Text(
+            widget.tituloPrimario,
           ),
-          const Text(
-            "Doutor",
-            textAlign: TextAlign.center,
+          Text(
+            widget.tituloSecundario,
           ),
-          const Text(
-            "Consulta/Exame",
-            textAlign: TextAlign.center,
+          Text(
+            widget.tituloTipagem,
           ),
-          const Text(
-            "Data",
-            textAlign: TextAlign.center,
+          Text(
+            widget.tituloInfo,
           ),
-          const Text(
-            "Hora",
-            textAlign: TextAlign.center,
+          Text(
+            widget.tituloComplementar,
           ),
-          const Text(
-            "Status",
-            textAlign: TextAlign.center,
+          Text(
+            widget.tituloStatus,
           ),
           Container(
-            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 0),
+            padding: const EdgeInsets.symmetric(horizontal: 28, vertical: 0),
             child: const Text("Ações"),
           ),
         ],

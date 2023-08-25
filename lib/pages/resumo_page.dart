@@ -10,7 +10,7 @@ class ResumoPage extends StatelessWidget {
       padding: const EdgeInsets.all(16),
       child: const Column(
         children: <Widget>[
-          TituloPagina(),
+          TituloPagina("RESUMO", "Painel de Controle."),
           Expanded(
             child: Center(child: Text("DASHBOARD")),
           )
