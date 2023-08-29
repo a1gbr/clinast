@@ -1,74 +1,90 @@
+import 'package:clinast/widgets/style/estilo_botao.dart';
 import 'package:flutter/material.dart';
 
 class TituloPagina extends StatelessWidget {
   const TituloPagina(this.tituloPagina, this.descricaoPagina, {super.key});
+
   final String tituloPagina;
   final String descricaoPagina;
 
   @override
   Widget build(BuildContext context) {
-    final ButtonStyle style =
-        ElevatedButton.styleFrom(textStyle: const TextStyle(fontSize: 20));
-    const TextStyle botaoStyle = TextStyle(fontSize: 18);
     return Row(
       children: <Widget>[
         Expanded(
-          child: Container(
-            padding: const EdgeInsets.all(8),
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Text(
                   tituloPagina,
                   style: const TextStyle(
-                      fontWeight: FontWeight.bold, fontSize: 24),
+                    fontWeight: FontWeight.bold,
+                    fontSize: 24,
+                  ),
                 ),
                 Text(
                   descricaoPagina,
-                  style: const TextStyle(fontWeight: FontWeight.w500),
+                  style: const TextStyle(
+                    fontWeight: FontWeight.w500,
+                  ),
                 ),
               ],
             ),
           ),
         ),
         Center(
-          child: Container(
-            padding: const EdgeInsets.all(8),
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
             child: Row(
               children: <Widget>[
+                // BOTAO DE EXPORTAR
                 ElevatedButton(
-                  style: style,
+                  style: estiloBotao,
                   onPressed: (
-                      // exportar .csv .json com os item-da-tabela exibida
+
+                      // FUNCAO PARA EXPORTAR TABELA DA PAGINA ATUAL
+
                       ) {},
                   child: const Row(
                     children: [
                       Icon(
                         (Icons.upgrade),
                       ),
-                      Padding(padding: EdgeInsets.all(2)),
+                      Padding(
+                        padding: EdgeInsets.all(2),
+                      ),
                       Text(
                         "Exportar",
-                        style: botaoStyle,
+                        style: estiloTextoBotao,
                       ),
                     ],
                   ),
                 ),
+
+                // ESPACAMENTO ENTRE BOTOES
                 const SizedBox(width: 8),
+
+                // BOTAO DE ITEM NOVO
                 ElevatedButton(
-                  style: style,
+                  style: estiloBotao,
                   onPressed: (
-                      // abrir o modal
+
+                      // ABRIR O MODAL/PAGINA PARA CRIACAO DE NOVO ITEM
+
                       ) {},
                   child: const Row(
                     children: [
                       Icon(
                         (Icons.add),
                       ),
-                      Padding(padding: EdgeInsets.all(2)),
+                      Padding(
+                        padding: EdgeInsets.all(2),
+                      ),
                       Text(
                         "Novo Item",
-                        style: botaoStyle,
+                        style: estiloTextoBotao,
                       ),
                     ],
                   ),

@@ -1,9 +1,10 @@
 import 'dart:ui';
 
+import 'package:clinast/widgets/style/cores.dart';
 import 'package:flutter/material.dart';
 
-class NavigationRailMenuButton extends StatelessWidget {
-  const NavigationRailMenuButton({super.key, this.onPressed});
+class BotaoDeNavegacao extends StatelessWidget {
+  const BotaoDeNavegacao({super.key, this.onPressed});
   final VoidCallback? onPressed;
 
   @override
@@ -12,15 +13,22 @@ class NavigationRailMenuButton extends StatelessWidget {
         NavigationRail.extendedAnimation(context);
     return AnimatedBuilder(
       animation: animation,
-      builder: (BuildContext context, Widget? child) {
+      builder: (
+        BuildContext context,
+        Widget? child,
+      ) {
         return Container(
           padding: EdgeInsets.only(
-            right: lerpDouble(0, 176, animation.value)!,
+            right: lerpDouble(
+              0,
+              176,
+              animation.value,
+            )!,
           ),
           child: IconButton(
             icon: const Icon(
               Icons.menu,
-              color: Colors.white,
+              color: branco,
             ),
             iconSize: 32,
             onPressed: onPressed,

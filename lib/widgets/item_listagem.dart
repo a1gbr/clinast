@@ -1,7 +1,7 @@
-import 'package:clinast/widgets/style/tabela_style.dart';
+import 'package:clinast/widgets/style/estilo_tabela.dart';
 import 'package:flutter/material.dart';
 
-import 'menu_acoes_tabela.dart';
+import 'botoes_tabela.dart';
 
 class ItemListagem extends StatefulWidget {
   const ItemListagem(
@@ -29,39 +29,74 @@ class ItemListagem extends StatefulWidget {
 class _ItemListagemState extends State<ItemListagem> {
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 32,
-      child: Padding(
-        padding: tablePadding,
-        child: Table(
-            columnWidths: tableStyling,
-            defaultVerticalAlignment: TableCellVerticalAlignment.middle,
+    return Padding(
+      // ESPACAMENTO ENTRE ITENS
+      padding: const EdgeInsets.symmetric(
+        horizontal: 4,
+        vertical: 4,
+      ),
+      child: Table(
+        columnWidths: mapaTabela,
+        defaultVerticalAlignment: TableCellVerticalAlignment.middle,
+        children: [
+          TableRow(
             children: [
-              TableRow(children: [
-                TableCell(
-                  child: Center(child: Text(widget.id)),
+              // TEXTO ID
+              TableCell(
+                child: Center(
+                  child: Text(widget.id),
                 ),
-                TableCell(
-                  child: Center(child: Text(widget.textoPrimario)),
+              ),
+
+              // TEXTO PRIMARIO
+              TableCell(
+                child: Center(
+                  child: Text(widget.textoPrimario),
                 ),
-                TableCell(
-                  child: Center(child: Text(widget.textoSecundario)),
+              ),
+
+              // TEXTO SECUNDARIO
+              TableCell(
+                child: Center(
+                  child: Text(widget.textoSecundario),
                 ),
-                TableCell(
-                  child: Center(child: Text(widget.textoTipagem)),
+              ),
+
+              // TEXTO TIPAGEM (CONSULTA, EXAME, FORMA DE PAGAMENTO)
+              TableCell(
+                child: Center(
+                  child: Text(widget.textoTipagem),
                 ),
-                TableCell(
-                  child: Center(child: Text(widget.textoInfo)),
+              ),
+
+              // TEXTO INFO ADICIONAL (DATA)
+              TableCell(
+                child: Center(
+                  child: Text(widget.textoInfo),
                 ),
-                TableCell(
-                  child: Center(child: Text(widget.textoComplementar)),
+              ),
+
+              // TEXTO COMPLEMENTAR (HORA, COD PAGAMENTO)
+              TableCell(
+                child: Center(
+                  child: Text(widget.textoComplementar),
                 ),
-                TableCell(
-                  child: Center(child: Text(widget.textoStatus)),
+              ),
+
+              // TEXTO DE STATUS DO ITEM
+              TableCell(
+                child: Center(
+                  child: Text(widget.textoStatus),
                 ),
-                const TableCell(child: MenuAcoesTabela())
-              ])
-            ]),
+              ),
+
+              // BOTOES DE ACAO
+              const TableCell(
+                child: BotoesTabela(),
+              ),
+            ],
+          )
+        ],
       ),
     );
   }
