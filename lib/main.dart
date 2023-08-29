@@ -1,12 +1,13 @@
+import 'package:clinast/widgets/style/cores.dart';
 import 'package:flutter/material.dart';
 
-import 'pages/conulstas_page.dart';
-import 'pages/doutores_page.dart';
-import 'pages/funcionarios_page.dart';
-import 'pages/pacientes_page.dart';
-import 'pages/pagamentos_page.dart';
-import 'pages/resumo_page.dart';
-import 'widgets/botao_menu_nav.dart';
+import 'pages/pg_consultas.dart';
+import 'pages/pg_doutores.dart';
+import 'pages/pg_funcionarios.dart';
+import 'pages/pg_pacientes.dart';
+import 'pages/pg_pagamentos.dart';
+import 'pages/pg_resumo.dart';
+import 'widgets/botao_navegacao.dart';
 
 void main() {
   runApp(const MyApp());
@@ -20,9 +21,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Clinic Management Assistant',
       theme: ThemeData(
-          useMaterial3: true,
-          colorScheme: ColorScheme.fromSwatch(
-              primarySwatch: Colors.teal /*cor principal, temporaria*/)),
+        useMaterial3: true,
+        colorScheme: ColorScheme.fromSeed(seedColor: acentuada),
+      ),
       home: const MyHomePage(),
     );
   }
@@ -69,70 +70,116 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Row(
         children: <Widget>[
           NavigationRail(
+            // INDEX ATUAL
             selectedIndex: _selectedIndex,
-            leading: NavigationRailMenuButton(
+
+            // BOTAO NO TOPO DA NAVEGACAO
+            leading: BotaoDeNavegacao(
               onPressed: () {
-                setState(() {
-                  _isExpanded = !_isExpanded;
-                });
+                setState(
+                  () {
+                    _isExpanded = !_isExpanded;
+                  },
+                );
               },
             ),
-            groupAlignment: 0.0,
             extended: _isExpanded,
             labelType: NavigationRailLabelType.none,
-            backgroundColor: Colors.black,
+
+            // ALINHAMENTO CENTRAL
+            groupAlignment: 0.0,
+
+            // COR TEMPORARIA
+            backgroundColor: fundo,
+
+            // DESTINOS DA NAVEGACAO
             destinations: const <NavigationRailDestination>[
+              // DASHBOARD/RESUMO
               NavigationRailDestination(
                 icon: Icon(Icons.dashboard_outlined),
                 selectedIcon: Icon(Icons.dashboard),
                 label: Text('R E S U M O'),
+
+                // ESPACAMENTO PARA PROXIMA CATEGORIA
                 padding: EdgeInsets.fromLTRB(0, 0, 0, 32),
               ),
+
+              // CONSULTAS
               NavigationRailDestination(
                 icon: Icon(Icons.monitor_heart_outlined),
                 selectedIcon: Icon(Icons.monitor_heart),
                 label: Text('C O N S U L T A S'),
               ),
+
+              // PACIENTES
               NavigationRailDestination(
                 icon: Icon(Icons.personal_injury_outlined),
                 selectedIcon: Icon(Icons.personal_injury),
                 label: Text('P A C I E N T E S'),
               ),
+
+              // DOUTORES
               NavigationRailDestination(
                 icon: Icon(Icons.local_hospital_outlined),
                 selectedIcon: Icon(Icons.local_hospital),
                 label: Text('D O U T O R E S'),
+
+                // ESPACAMENTO PARA PROXIMA CATEGORIA
                 padding: EdgeInsets.fromLTRB(0, 0, 0, 32),
               ),
+
+              // FUNCIONARIOS
               NavigationRailDestination(
                 icon: Icon(Icons.badge_outlined),
                 selectedIcon: Icon(Icons.badge),
                 label: Text('F U N C I O N Á R I O S'),
               ),
+
+              // PAGAMENTOS
               NavigationRailDestination(
                 icon: Icon(Icons.payments_outlined),
                 selectedIcon: Icon(Icons.payments),
                 label: Text('P A G A M E N T O S'),
               ),
             ],
+
+            // MUDANCA DE INDEX BASEADO NO DESTINO
             onDestinationSelected: (value) {
-              setState(() {
-                _selectedIndex = value;
-              });
+              setState(
+                () {
+                  _selectedIndex = value;
+                },
+              );
             },
-            selectedIconTheme: const IconThemeData(color: Colors.white),
-            unselectedIconTheme: const IconThemeData(color: Colors.white),
-            selectedLabelTextStyle: const TextStyle(color: Colors.tealAccent),
-            unselectedLabelTextStyle: const TextStyle(color: Colors.white),
+
+            // CORES DA NAVEGACAO --TEMPORARIO
+            selectedIconTheme: const IconThemeData(
+              color: fundo,
+            ),
+            unselectedIconTheme: const IconThemeData(
+              color: branco,
+            ),
+            selectedLabelTextStyle: const TextStyle(
+              color: acentuada,
+            ),
+            unselectedLabelTextStyle: const TextStyle(
+              color: branco,
+            ),
           ),
+
+          // DIVISOR VERTICAL
           const VerticalDivider(
             thickness: 1,
             width: 1,
-            color: Colors.cyan,
+            color: fundo,
           ),
+
+          // CORPO DO SOFTWARE
           Expanded(
-            child: Container(
-              // page agr é uma referencia para o statelesswidget q foi construida a pagina desejada
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+
+              // PAGINA ATUAL
               child: page,
             ),
           ),
