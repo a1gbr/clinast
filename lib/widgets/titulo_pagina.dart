@@ -42,11 +42,9 @@ class TituloPagina extends StatelessWidget {
                 // BOTAO DE EXPORTAR
                 ElevatedButton(
                   style: estiloBotao,
-                  onPressed: (
-
-                      // FUNCAO PARA EXPORTAR TABELA DA PAGINA ATUAL
-
-                      ) {},
+                  onPressed: () {
+                    // FUNCAO PARA EXPORTAR TABELA DA PAGINA ATUAL
+                  },
                   child: const Row(
                     children: [
                       Icon(
@@ -69,11 +67,9 @@ class TituloPagina extends StatelessWidget {
                 // BOTAO DE ITEM NOVO
                 ElevatedButton(
                   style: estiloBotao,
-                  onPressed: (
-
-                      // ABRIR O MODAL/PAGINA PARA CRIACAO DE NOVO ITEM
-
-                      ) {},
+                  onPressed: () {
+                    // ABRIR O MODAL/PAGINA PARA CRIACAO DE NOVO ITEM
+                  },
                   child: const Row(
                     children: [
                       Icon(

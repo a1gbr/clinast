@@ -12,9 +12,11 @@ class ResumoPage extends StatefulWidget {
 class _ResumoPageState extends State<ResumoPage> {
   @override
   Widget build(BuildContext context) {
+    // bool _isDesktop(BuildContext context) =>
+    //MediaQuery.of(context).size.width >= 900;
     return const Scaffold(
       body: Column(
-        children: <Widget>[
+        children: [
           // TITULO DA PAGINA
           TituloPagina(
             "RESUMO",
@@ -63,13 +65,50 @@ class _ResumoPageState extends State<ResumoPage> {
                     ),
                   ],
                 ),
-
-                // RESTO DO CORPO AQUI
               ],
             ),
-          )
+          ),
         ],
       ),
     );
   }
 }
+
+
+/**
+Row(
+  mainAxisAlignment: MainAxisAlignment.spaceAround,
+  children: [
+  CardResumo(
+  Icons.attach_money,
+  "Financeiro",
+  "R\$ 10.994,23",
+  "Descrição longa do card, 30 dias blah blah.",
+  ),
+  CardResumo(
+  Icons.attach_money,
+  "Financeiro",
+  "R\$ 10.994,23",
+  "Descrição longa do card, 30 dias blah blah.",
+  ),
+  CardResumo(
+  Icons.attach_money,
+  "Financeiro",
+  "R\$ 10.994,23",
+  "Descrição longa do card, 30 dias blah blah.",
+  ),
+  CardResumo(
+  Icons.attach_money,
+  "Financeiro",
+  "R\$ 10.994,23",
+  "Descrição longa do card, 30 dias blah blah.",
+  ),
+  CardResumo(
+  Icons.attach_money,
+  "Financeiro",
+  "R\$ 10.994,23",
+  "Descrição longa do card, 30 dias blah blah.",
+  ),
+  ],
+  ),
+ */

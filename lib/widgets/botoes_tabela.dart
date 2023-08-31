@@ -1,5 +1,5 @@
-import 'package:clinast/widgets/style/estilo_tabela.dart';
 import 'package:clinast/widgets/style/cores.dart';
+import 'package:clinast/widgets/style/estilo_tabela.dart';
 import 'package:flutter/material.dart';
 
 class BotoesTabela extends StatelessWidget {
@@ -15,11 +15,9 @@ class BotoesTabela extends StatelessWidget {
 
         // POSSIVELMENTE SERA REFATORADO PRA ICONE
         FilledButton(
-          onPressed: (
-
-              // FUNCAO PARAR ABRIR MODAL
-
-              ) {},
+          onPressed: () {
+            // FUNCAO PARAR ABRIR MODAL
+          },
           style: const ButtonStyle(
             backgroundColor: MaterialStatePropertyAll(verde),
             fixedSize: estiloFixo,
@@ -30,11 +28,9 @@ class BotoesTabela extends StatelessWidget {
 
         //
         FilledButton(
-          onPressed: (
-
-              // FUNCAO PARA EDITAR -- PODERIA SER UNIFICADO COMO BOTAO ACIMA
-
-              ) {},
+          onPressed: () {
+            // FUNCAO PARA EDITAR -- PODERIA SER UNIFICADO COMO BOTAO ACIMA
+          },
           style: const ButtonStyle(
             backgroundColor: MaterialStatePropertyAll(amarelo),
             fixedSize: estiloFixo,
@@ -45,11 +41,9 @@ class BotoesTabela extends StatelessWidget {
 
         //
         FilledButton(
-          onPressed: (
-
-              // BOTAO APRA APAGAR
-
-              ) {},
+          onPressed: () {
+            // BOTAO APRA APAGAR
+          },
           style: const ButtonStyle(
             backgroundColor: MaterialStatePropertyAll(vermelho),
             fixedSize: estiloFixo,

@@ -111,7 +111,7 @@ class MenuTabela extends StatelessWidget {
               const TableCell(
                 child: Center(
                   child: Text(
-                    "Ações",
+                    "AÇÕES",
                     style: estiloTexto,
                   ),
                 ),

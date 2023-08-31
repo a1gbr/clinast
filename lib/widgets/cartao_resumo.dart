@@ -17,16 +17,18 @@ class CardResumo extends StatefulWidget {
 class _CardResumoState extends State<CardResumo> {
   @override
   Widget build(BuildContext context) {
+    final tamCartao = MediaQuery.of(context).size.width * 0.16;
     return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 4, vertical: 0),
       height: 200,
-      width: 220,
+      width: tamCartao,
       decoration: BoxDecoration(
         color: branco,
-        border: Border.all(width: 1.4),
+        border: Border.all(width: 1),
         borderRadius: BorderRadius.circular(10),
       ),
       child: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(6.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -62,7 +64,7 @@ class _CardResumoState extends State<CardResumo> {
 
             // DESCRICAO DO CARTAO
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(6.0),
               child: Text(widget.descCard),
             ),
           ],

@@ -3,14 +3,14 @@ import 'package:clinast/widgets/menu_tabela.dart';
 import 'package:clinast/widgets/titulo_pagina.dart';
 import 'package:flutter/material.dart';
 
-class ConsultasPage extends StatefulWidget {
-  const ConsultasPage({super.key});
+class ExamesPage extends StatefulWidget {
+  const ExamesPage({super.key});
 
   @override
-  State<ConsultasPage> createState() => _ConsultasPageState();
+  State<ExamesPage> createState() => _ExamesPageState();
 }
 
-class _ConsultasPageState extends State<ConsultasPage> {
+class _ExamesPageState extends State<ExamesPage> {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
@@ -33,7 +33,7 @@ class _ConsultasPageState extends State<ConsultasPage> {
                   "COD",
                   "NOME",
                   "MÉDICO",
-                  'CONSULTA',
+                  'EXAME',
                   "DATA",
                   "HR",
                   'STATUS',
@@ -42,7 +42,7 @@ class _ConsultasPageState extends State<ConsultasPage> {
                   "00",
                   "NOME DE PACIENTE QUALQUER",
                   'Dr. SEM NOME',
-                  'GERAL',
+                  'ULTRASSONOGRAFIA',
                   '11/12',
                   '18:00',
                   'CONFIRMADA',
@@ -51,7 +51,7 @@ class _ConsultasPageState extends State<ConsultasPage> {
                   "00",
                   "NOME DE PACIENTE QUALQUER",
                   'Dr. SEM NOME',
-                  'FONOAUDIÓLOGA',
+                  'RAIO X',
                   '24/10',
                   '18:00',
                   'PENDENTE',
@@ -60,7 +60,7 @@ class _ConsultasPageState extends State<ConsultasPage> {
                   "00",
                   "NOME DE PACIENTE QUALQUER",
                   'Dr. SEM NOME',
-                  'NUTRICIONISTACIONISTA',
+                  'ESPIROMETRIA',
                   '11/12',
                   '18:00',
                   'CONFIRMADA',
@@ -69,7 +69,7 @@ class _ConsultasPageState extends State<ConsultasPage> {
                   "00",
                   "NOME DE PACIENTE QUALQUER",
                   'Dr. SEM NOME',
-                  'GERAL',
+                  'MAPEAMENTO CEREBRAL',
                   '24/10',
                   '18:00',
                   'PENDENTE',
@@ -78,7 +78,7 @@ class _ConsultasPageState extends State<ConsultasPage> {
                   "00",
                   "NOME DE PACIENTE QUALQUER",
                   'Dr. SEM NOME',
-                  'NUTRICIONISTACIONISTA',
+                  'ULTRASSONOGRAFIA',
                   '11/12',
                   '18:00',
                   'CONFIRMADA',
@@ -87,7 +87,7 @@ class _ConsultasPageState extends State<ConsultasPage> {
                   "00",
                   "NOME DE PACIENTE QUALQUER",
                   'Dr. SEM NOME',
-                  'NUTRICIONISTACIONISTA',
+                  'POLISSONOGRAFIA',
                   '24/10',
                   '18:00',
                   'PENDENTE',
@@ -96,7 +96,7 @@ class _ConsultasPageState extends State<ConsultasPage> {
                   "00",
                   "NOME DE PACIENTE QUALQUER",
                   'Dr. SEM NOME',
-                  'CARDIOLOGIA',
+                  'ULTRASSONOGRAFIA',
                   '11/12',
                   '18:00',
                   'CONFIRMADA',
@@ -105,7 +105,7 @@ class _ConsultasPageState extends State<ConsultasPage> {
                   "00",
                   "NOME DE PACIENTE QUALQUER",
                   'Dr. SEM NOME',
-                  'ORTOPEDIA',
+                  'TOMOGRAFIA',
                   '24/10',
                   '18:00',
                   'PENDENTE',
@@ -114,7 +114,7 @@ class _ConsultasPageState extends State<ConsultasPage> {
                   "00",
                   "NOME DE PACIENTE QUALQUER",
                   'Dr. SEM NOME',
-                  'PSICÓLOGA',
+                  'ULTRASSONOGRAFIA',
                   '11/12',
                   '18:00',
                   'CONFIRMADA',
@@ -123,7 +123,7 @@ class _ConsultasPageState extends State<ConsultasPage> {
                   "00",
                   "NOME DE PACIENTE QUALQUER",
                   'Dr. SEM NOME',
-                  'FISIOTERAPIA',
+                  'TESTE ERGOMÉTRICO',
                   '24/10',
                   '18:00',
                   'PENDENTE',

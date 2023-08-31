@@ -1,3 +1,4 @@
+import 'package:clinast/pages/pg_exames.dart';
 import 'package:clinast/widgets/style/cores.dart';
 import 'package:flutter/material.dart';
 
@@ -49,18 +50,21 @@ class _MyHomePageState extends State<MyHomePage> {
         page = const ResumoPage();
         break;
       case 1:
-        page = const ConsultasPage();
+        page = const ExamesPage();
         break;
       case 2:
-        page = const PacientesPage();
+        page = const ConsultasPage();
         break;
       case 3:
-        page = const DoutoresPage();
+        page = const PacientesPage();
         break;
       case 4:
-        page = const FuncionariosPage();
+        page = const DoutoresPage();
         break;
       case 5:
+        page = const FuncionariosPage();
+        break;
+      case 6:
         page = const PagamentosPage();
         break;
       default:
@@ -104,11 +108,21 @@ class _MyHomePageState extends State<MyHomePage> {
                 padding: EdgeInsets.fromLTRB(0, 0, 0, 32),
               ),
 
+              // EXAMES
+              NavigationRailDestination(
+                icon: Icon(Icons.monitor_heart_outlined),
+                selectedIcon: Icon(Icons.monitor_heart),
+                label: Text('E X A M E S'),
+              ),
+
               // CONSULTAS
               NavigationRailDestination(
                 icon: Icon(Icons.monitor_heart_outlined),
                 selectedIcon: Icon(Icons.monitor_heart),
                 label: Text('C O N S U L T A S'),
+
+                // ESPACAMENTO PARA PROXIMA CATEGORIA
+                padding: EdgeInsets.fromLTRB(0, 0, 0, 32),
               ),
 
               // PACIENTES
