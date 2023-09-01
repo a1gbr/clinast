@@ -5,7 +5,7 @@ enum _GeradorPaciente { instance }
 class Paciente extends Pessoa {
   final String altura;
   final String peso;
-  final List<String> medicamentos;
+  final List<String>? medicamentos;
 
   Paciente(
       {required String nome,
@@ -18,7 +18,7 @@ class Paciente extends Pessoa {
       required String cpf,
       required this.altura,
       required this.peso,
-      required this.medicamentos})
+      this.medicamentos})
       : super(
           nome: nome,
           dataNascimento: dataNascimento,

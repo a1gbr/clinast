@@ -30,6 +30,6 @@ class Consulta extends Procedimento {
 
   @override
   String toString() {
-    return 'Exame(id: $id, paciente: $nomePaciente, medico: $nomeMedico, data: $data, hora: $hora, valor: $valor, convenio: $convenio, desconto: $desconto, status: $status, tipo: $tipo, solicitante: $solicitante)';
+    return 'Coonsulta(id: $id, paciente: $nomePaciente, medico: $nomeMedico, data: $data, hora: $hora, valor: $valor, convenio: $convenio, desconto: $desconto, status: $status, tipo: $tipo, solicitante: $solicitante)';
   }
 }
