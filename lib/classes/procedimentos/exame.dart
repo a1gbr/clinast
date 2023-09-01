@@ -1,7 +1,5 @@
 import 'package:clinast/classes/procedimentos/procedimento.dart';
 
-enum _GeradorExame { instance }
-
 class Exame extends Procedimento {
   final String tipo;
   final String? solicitante;

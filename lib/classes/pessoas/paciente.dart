@@ -1,7 +1,5 @@
 import 'package:clinast/classes/pessoas/pessoa.dart';
 
-enum _GeradorPaciente { instance }
-
 class Paciente extends Pessoa {
   final String altura;
   final String peso;

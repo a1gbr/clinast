@@ -1,7 +1,5 @@
 import 'package:clinast/classes/pessoas/pessoa.dart';
 
-enum _GeradorFuncionario { instance }
-
 class Funcionario extends Pessoa {
   final String turno;
   final String funcao;

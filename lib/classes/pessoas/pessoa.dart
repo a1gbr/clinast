@@ -1,5 +1,3 @@
-enum _GeradorPessoa { instance }
-
 class Pessoa {
   static int _idCounter = 0;
 

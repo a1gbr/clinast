@@ -1,5 +1,3 @@
-enum _GeradorPagamento { instance }
-
 class Pagamento {
   static int _idCounter = 0;
 

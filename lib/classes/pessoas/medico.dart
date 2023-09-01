@@ -1,11 +1,9 @@
 import 'package:clinast/classes/pessoas/pessoa.dart';
 
-enum _GeradorMedico { instance }
-
 class Medico extends Pessoa {
   final String crm;
   final String especialidade;
-  
+
   Medico({
     required String nome,
     required String dataNascimento,
