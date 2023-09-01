@@ -1,12 +1,12 @@
-import 'package:clinast/classes/pessoa.dart';
+import 'package:clinast/classes/pessoas/pessoa.dart';
 
-enum _GeradorMedico { instance }
+enum _GeradorFuncionario { instance }
 
-class Medico extends Pessoa {
-  final String crm;
-  final String especialidade;
+class Funcionario extends Pessoa {
+  final String turno;
+  final String funcao;
 
-  Medico({
+  Funcionario({
     required String nome,
     required String dataNascimento,
     required String rua,
@@ -15,8 +15,8 @@ class Medico extends Pessoa {
     required String cep,
     required String telefone,
     required String cpf,
-    required this.crm,
-    required this.especialidade,
+    required this.turno,
+    required this.funcao,
   }) : super(
           nome: nome,
           dataNascimento: dataNascimento,
@@ -30,6 +30,6 @@ class Medico extends Pessoa {
 
   @override
   String toString() {
-    return 'Médico(id: $id, nome: $nome, dataNascimento: $dataNascimento, rua: $rua, bairro: $bairro, cidade: $cidade, cep: $cep, telefone: $telefone, cpf: $cpf, crm: $crm, especialidade: $especialidade)';
+    return 'Funcionário(id: $id, nome: $nome, dataNascimento: $dataNascimento, rua: $rua, bairro: $bairro, cidade: $cidade, cep: $cep, telefone: $telefone, cpf: $cpf, turno: $turno, função: $funcao)';
   }
 }

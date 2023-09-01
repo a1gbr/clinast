@@ -1,4 +1,4 @@
-import 'package:clinast/classes/pessoa.dart';
+import 'package:clinast/classes/pessoas/pessoa.dart';
 
 enum _GeradorPaciente { instance }
 
