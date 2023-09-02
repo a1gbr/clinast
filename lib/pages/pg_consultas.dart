@@ -37,7 +37,7 @@ class _ConsultasPageState extends State<ConsultasPage> {
 
     return Scaffold(
       body: Column(
-        children: [
+        children: <Widget>[
           // TITULO DA PAGINA
           const TituloPagina(
             "CONSULTAS",

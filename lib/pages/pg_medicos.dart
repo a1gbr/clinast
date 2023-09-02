@@ -40,7 +40,7 @@ class _MedicosPageState extends State<MedicosPage> {
         children: <Widget>[
           // TITULO DA PAGINA
           const TituloPagina(
-            "DOUTORES",
+            "MÉDICOS",
             "Lista de Doutores:",
           ),
 

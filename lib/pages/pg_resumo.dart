@@ -14,7 +14,7 @@ class _ResumoPageState extends State<ResumoPage> {
   Widget build(BuildContext context) {
     return const Scaffold(
       body: Column(
-        children: [
+        children: <Widget>[
           // TITULO DA PAGINA
           TituloPagina(
             "RESUMO",
