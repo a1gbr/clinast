@@ -1,4 +1,4 @@
-import 'package:clinast/classes/pessoas/pessoa.dart';
+import '../../classes/pessoas/pessoa.dart';
 
 class Medico extends Pessoa {
   final String crm;
@@ -28,6 +28,6 @@ class Medico extends Pessoa {
 
   @override
   String toString() {
-    return 'Médico(id: $id, nome: $nome, dataNascimento: $dataNascimento, rua: $rua, bairro: $bairro, cidade: $cidade, cep: $cep, telefone: $telefone, cpf: $cpf, crm: $crm, especialidade: $especialidade)';
+    return 'MEDICO $id SELECIONADO';
   }
 }

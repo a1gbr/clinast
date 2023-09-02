@@ -1,11 +1,30 @@
-import 'package:clinast/widgets/item_listagem.dart';
-import 'package:clinast/widgets/menu_tabela.dart';
-import 'package:clinast/widgets/titulo_pagina.dart';
 import 'package:flutter/material.dart';
 
-class ConsultasPage extends StatefulWidget {
-  const ConsultasPage({super.key});
+import '../back_falso/dt_consultas.dart';
+import '../widgets/tabela.dart';
+import '../widgets/titulo_pagina.dart';
 
+// CRIA A LISTA DE TITULOS DAS COLUNAS
+final List<String> tituloColunas = [
+  'ID',
+  'PACIENTE',
+  'MÉDICO',
+  'TIPO',
+  'DATA',
+  'HORA',
+  'VALOR',
+  'CONVÊNIO',
+  'STATUS',
+];
+
+class ConsultasPage extends StatefulWidget {
+  const ConsultasPage({
+    required this.colunas,
+    required this.itens,
+    super.key,
+  });
+  final List<String> colunas;
+  final List<Map<String, dynamic>> itens;
   @override
   State<ConsultasPage> createState() => _ConsultasPageState();
 }
@@ -13,124 +32,35 @@ class ConsultasPage extends StatefulWidget {
 class _ConsultasPageState extends State<ConsultasPage> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    // GERANDO BACK FALSO
+    consultas.isEmpty ? geradorConsultas() : null;
+
+    return Scaffold(
       body: Column(
-        children: <Widget>[
+        children: [
           // TITULO DA PAGINA
-          TituloPagina(
+          const TituloPagina(
             "CONSULTAS",
             "Lista de consultas:",
           ),
 
           // ESPACAMENTO DO TITULO PRO CORPO
-          SizedBox(height: 16),
+          const SizedBox(height: 16),
 
           // CORPO DA PAGINA
           Expanded(
-            child: Column(
-              children: [
-                MenuTabela(
-                  "COD",
-                  "NOME",
-                  "MÉDICO",
-                  'CONSULTA',
-                  "DATA",
-                  "HR",
-                  'STATUS',
-                ),
-                ItemListagem(
-                  "00",
-                  "NOME DE PACIENTE QUALQUER",
-                  'Dr. SEM NOME',
-                  'GERAL',
-                  '11/12',
-                  '18:00',
-                  'CONFIRMADA',
-                ),
-                ItemListagem(
-                  "00",
-                  "NOME DE PACIENTE QUALQUER",
-                  'Dr. SEM NOME',
-                  'FONOAUDIÓLOGA',
-                  '24/10',
-                  '18:00',
-                  'PENDENTE',
-                ),
-                ItemListagem(
-                  "00",
-                  "NOME DE PACIENTE QUALQUER",
-                  'Dr. SEM NOME',
-                  'NUTRICIONISTACIONISTA',
-                  '11/12',
-                  '18:00',
-                  'CONFIRMADA',
-                ),
-                ItemListagem(
-                  "00",
-                  "NOME DE PACIENTE QUALQUER",
-                  'Dr. SEM NOME',
-                  'GERAL',
-                  '24/10',
-                  '18:00',
-                  'PENDENTE',
-                ),
-                ItemListagem(
-                  "00",
-                  "NOME DE PACIENTE QUALQUER",
-                  'Dr. SEM NOME',
-                  'NUTRICIONISTACIONISTA',
-                  '11/12',
-                  '18:00',
-                  'CONFIRMADA',
-                ),
-                ItemListagem(
-                  "00",
-                  "NOME DE PACIENTE QUALQUER",
-                  'Dr. SEM NOME',
-                  'NUTRICIONISTACIONISTA',
-                  '24/10',
-                  '18:00',
-                  'PENDENTE',
-                ),
-                ItemListagem(
-                  "00",
-                  "NOME DE PACIENTE QUALQUER",
-                  'Dr. SEM NOME',
-                  'CARDIOLOGIA',
-                  '11/12',
-                  '18:00',
-                  'CONFIRMADA',
-                ),
-                ItemListagem(
-                  "00",
-                  "NOME DE PACIENTE QUALQUER",
-                  'Dr. SEM NOME',
-                  'ORTOPEDIA',
-                  '24/10',
-                  '18:00',
-                  'PENDENTE',
-                ),
-                ItemListagem(
-                  "00",
-                  "NOME DE PACIENTE QUALQUER",
-                  'Dr. SEM NOME',
-                  'PSICÓLOGA',
-                  '11/12',
-                  '18:00',
-                  'CONFIRMADA',
-                ),
-                ItemListagem(
-                  "00",
-                  "NOME DE PACIENTE QUALQUER",
-                  'Dr. SEM NOME',
-                  'FISIOTERAPIA',
-                  '24/10',
-                  '18:00',
-                  'PENDENTE',
-                ),
-              ],
+            child: Center(
+              // CHAMANDO O WIDGET TABELA
+              child: DynamicDataTable(
+                colunas: tituloColunas,
+                itens: consultas,
+                naSelecao: (selecionados) {
+                  // LOG PRO DEBUG
+                  print(selecionados);
+                },
+              ),
             ),
-          )
+          ),
         ],
       ),
     );

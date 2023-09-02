@@ -1,7 +1,8 @@
 import 'dart:ui';
 
-import 'package:clinast/widgets/style/cores.dart';
 import 'package:flutter/material.dart';
+
+import '../widgets/style/cores.dart';
 
 class BotaoDeNavegacao extends StatelessWidget {
   const BotaoDeNavegacao({super.key, this.onPressed});

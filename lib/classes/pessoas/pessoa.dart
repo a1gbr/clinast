@@ -24,6 +24,6 @@ class Pessoa {
 
   @override
   String toString() {
-    return 'Pessoa(id: $id, nome: $nome, dataNascimento: $dataNascimento, rua: $rua, bairro: $bairro, cidade: $cidade, cep: $cep, telefone: $telefone, cpf: $cpf)';
+    return 'PESSOA $id SELECIONADA';
   }
 }

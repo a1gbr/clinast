@@ -1,4 +1,4 @@
-import 'package:clinast/classes/procedimentos/procedimento.dart';
+import '../../classes/procedimentos/procedimento.dart';
 
 class Exame extends Procedimento {
   final String tipo;
@@ -7,14 +7,13 @@ class Exame extends Procedimento {
   Exame({
     required String nomePaciente,
     required String nomeMedico,
-    required String data,
-    required String hora,
-    required String valor,
-    required String convenio,
-    required String desconto,
-    required String status,
     required this.tipo,
     this.solicitante,
+    required DateTime data,
+    required DateTime hora,
+    required String valor,
+    required String convenio,
+    required String status,
   }) : super(
           nomePaciente: nomePaciente,
           nomeMedico: nomeMedico,
@@ -22,12 +21,11 @@ class Exame extends Procedimento {
           hora: hora,
           valor: valor,
           convenio: convenio,
-          desconto: desconto,
           status: status,
         );
 
   @override
   String toString() {
-    return 'Exame(id: $id, paciente: $nomePaciente, medico: $nomeMedico, data: $data, hora: $hora, valor: $valor, convenio: $convenio, desconto: $desconto, status: $status, tipo: $tipo, solicitante: $solicitante)';
+    return 'EXAME $id SELECIONADO';
   }
 }

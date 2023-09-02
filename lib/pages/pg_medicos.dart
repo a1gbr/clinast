@@ -1,51 +1,50 @@
 import 'package:flutter/material.dart';
 
-import '../back_falso/dt_exames.dart';
+import '../back_falso/dt_medicos.dart';
 import '../widgets/tabela.dart';
 import '../widgets/titulo_pagina.dart';
 
 // CRIA A LISTA DE TITULOS DAS COLUNAS
 final List<String> tituloColunas = [
   'ID',
-  'PACIENTE',
-  'MÉDICO',
-  'TIPO',
-  'SOLICITANTE',
-  'DATA',
-  'HORA',
-  'VALOR',
-  'CONVÊNIO',
-  'STATUS',
+  'NOME',
+  'DATA NASC',
+  'CIDADE',
+  'CEP',
+  'TELEFONE',
+  'CRM',
+  'ESPECIALIDADE',
 ];
 
-class ExamesPage extends StatefulWidget {
-  const ExamesPage({
+class MedicosPage extends StatefulWidget {
+  const MedicosPage({
     required this.colunas,
     required this.itens,
     super.key,
   });
+
   final List<String> colunas;
   final List<Map<String, dynamic>> itens;
+
   @override
-  State<ExamesPage> createState() => _ExamesPageState();
+  State<MedicosPage> createState() => _MedicosPageState();
 }
 
-class _ExamesPageState extends State<ExamesPage> {
+class _MedicosPageState extends State<MedicosPage> {
   @override
   Widget build(BuildContext context) {
     // GERANDO BACK FALSO
-    exames.isEmpty ? geradorExames() : null;
-
+    medicos.isEmpty ? geradorMedicos() : null;
     return Scaffold(
       body: Column(
         children: <Widget>[
           // TITULO DA PAGINA
           const TituloPagina(
-            "EXAMES",
-            "Lista de exames:",
+            "DOUTORES",
+            "Lista de Doutores:",
           ),
 
-          // ESPACAMENTO DO TITULO PRO CORPO
+          // ESCAPAMENTO DO TITULO PRO CORPO
           const SizedBox(height: 16),
 
           // CORPO DA PAGINA
@@ -53,14 +52,15 @@ class _ExamesPageState extends State<ExamesPage> {
             child: Center(
               // CHAMANDO O WIDGET TABELA
               child: DynamicDataTable(
-                  colunas: tituloColunas,
-                  itens: exames,
-                  naSelecao: (selecionados) {
-                    // LOG PRO DEBUG
-                    print(selecionados);
-                  }),
+                colunas: tituloColunas,
+                itens: medicos,
+                naSelecao: (selecionados) {
+                  // LOG PRO DEBUG
+                  print(selecionados);
+                },
+              ),
             ),
-          ),
+          )
         ],
       ),
     );

@@ -1,5 +1,5 @@
 import 'package:clinast/widgets/style/cores.dart';
-import 'package:clinast/widgets/style/estilo_tabela.dart';
+import 'package:clinast/widgets/style/deprecado_estilo_tabela.dart';
 import 'package:flutter/material.dart';
 
 class BotoesTabela extends StatelessWidget {

@@ -1,14 +1,14 @@
-import 'package:clinast/pages/pg_exames.dart';
-import 'package:clinast/widgets/style/cores.dart';
 import 'package:flutter/material.dart';
 
 import 'pages/pg_consultas.dart';
-import 'pages/pg_doutores.dart';
+import 'pages/pg_exames.dart';
 import 'pages/pg_funcionarios.dart';
+import 'pages/pg_medicos.dart';
 import 'pages/pg_pacientes.dart';
 import 'pages/pg_pagamentos.dart';
 import 'pages/pg_resumo.dart';
 import 'widgets/botao_navegacao.dart';
+import 'widgets/style/cores.dart';
 
 void main() {
   runApp(const MyApp());
@@ -38,34 +38,53 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  // _selectedIndex representa o valor que será usado para diferenciar qual página deve ser exibida
+  // INDEX DA NAVEGACAO
   var _selectedIndex = 0;
+  // ESTADO DA NAVEGACAO
   bool _isExpanded = false;
   @override
   Widget build(BuildContext context) {
     Widget page;
-    // recebendo o valor do index e referenciando qual página deve ser representada pelo widget 'page'
+    // PAGINA ATUAL
     switch (_selectedIndex) {
       case 0:
         page = const ResumoPage();
         break;
       case 1:
-        page = const ExamesPage();
+        page = const ExamesPage(
+          colunas: [],
+          itens: [],
+        );
         break;
       case 2:
-        page = const ConsultasPage();
+        page = const ConsultasPage(
+          colunas: [],
+          itens: [],
+        );
         break;
       case 3:
-        page = const PacientesPage();
+        page = const PacientesPage(
+          colunas: [],
+          itens: [],
+        );
         break;
       case 4:
-        page = const DoutoresPage();
+        page = const MedicosPage(
+          colunas: [],
+          itens: [],
+        );
         break;
       case 5:
-        page = const FuncionariosPage();
+        page = const FuncionariosPage(
+          colunas: [],
+          itens: [],
+        );
         break;
       case 6:
-        page = const PagamentosPage();
+        page = const PagamentosPage(
+          colunas: [],
+          itens: [],
+        );
         break;
       default:
         throw UnimplementedError("No widget for $_selectedIndex");
@@ -87,6 +106,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 );
               },
             ),
+
             extended: _isExpanded,
             labelType: NavigationRailLabelType.none,
 
@@ -136,7 +156,7 @@ class _MyHomePageState extends State<MyHomePage> {
               NavigationRailDestination(
                 icon: Icon(Icons.local_hospital_outlined),
                 selectedIcon: Icon(Icons.local_hospital),
-                label: Text('D O U T O R E S'),
+                label: Text('M É D I C O S'),
 
                 // ESPACAMENTO PARA PROXIMA CATEGORIA
                 padding: EdgeInsets.fromLTRB(0, 0, 0, 32),

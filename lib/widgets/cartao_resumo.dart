@@ -1,5 +1,6 @@
-import 'package:clinast/widgets/style/cores.dart';
 import 'package:flutter/material.dart';
+
+import '../widgets/style/cores.dart';
 
 class CardResumo extends StatefulWidget {
   const CardResumo(this.icon, this.tituloCard, this.valorCard, this.descCard,

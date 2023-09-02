@@ -1,7 +1,7 @@
-import 'package:clinast/widgets/style/estilo_tabela.dart';
+import 'package:clinast/widgets/style/deprecado_estilo_tabela.dart';
 import 'package:flutter/material.dart';
 
-import 'botoes_tabela.dart';
+import 'deprecado_botoes_tabela.dart';
 
 class ItemListagem extends StatefulWidget {
   const ItemListagem(

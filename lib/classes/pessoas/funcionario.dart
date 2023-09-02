@@ -1,4 +1,4 @@
-import 'package:clinast/classes/pessoas/pessoa.dart';
+import '../../classes/pessoas/pessoa.dart';
 
 class Funcionario extends Pessoa {
   final String turno;
@@ -28,6 +28,6 @@ class Funcionario extends Pessoa {
 
   @override
   String toString() {
-    return 'Funcionário(id: $id, nome: $nome, dataNascimento: $dataNascimento, rua: $rua, bairro: $bairro, cidade: $cidade, cep: $cep, telefone: $telefone, cpf: $cpf, turno: $turno, função: $funcao)';
+    return 'FUNCIONARIO $id SELECIONADO';
   }
 }

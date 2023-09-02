@@ -1,20 +1,17 @@
-import 'package:clinast/classes/procedimentos/procedimento.dart';
+import '../../classes/procedimentos/procedimento.dart';
 
 class Consulta extends Procedimento {
   final String tipo;
-  final String? solicitante;
 
   Consulta({
     required String nomePaciente,
     required String nomeMedico,
-    required String data,
-    required String hora,
+    required DateTime data,
+    required DateTime hora,
+    required this.tipo,
     required String valor,
     required String convenio,
-    required String desconto,
     required String status,
-    required this.tipo,
-    this.solicitante,
   }) : super(
           nomePaciente: nomePaciente,
           nomeMedico: nomeMedico,
@@ -22,12 +19,11 @@ class Consulta extends Procedimento {
           hora: hora,
           valor: valor,
           convenio: convenio,
-          desconto: desconto,
           status: status,
         );
 
   @override
   String toString() {
-    return 'Coonsulta(id: $id, paciente: $nomePaciente, medico: $nomeMedico, data: $data, hora: $hora, valor: $valor, convenio: $convenio, desconto: $desconto, status: $status, tipo: $tipo, solicitante: $solicitante)';
+    return 'CONSULTA $id SELECIONADA';
   }
 }
