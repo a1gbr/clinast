@@ -30,6 +30,28 @@ class FuncionariosPage extends StatefulWidget {
   State<FuncionariosPage> createState() => _FuncionariosPageState();
 }
 
+void handleExportarClick() {
+  // Handle Exportar button click here
+}
+
+void handleNovoItemClick() {
+  funcionarios.add(
+    {
+      'ID': 'x',
+      'NOME': 'Funcionario dos Santos Silva Júnior',
+      'DATA NASC': '1998/05/25',
+      'RUA': 'R. NASCIMENTO DE AGOSTO',
+      'BAIRRO': 'CENTRO',
+      'CIDADE': 'OLIVEIRA',
+      'CEP': '14445000',
+      'TELEFONE': '31 225444778',
+      'CPF': '***3248****',
+      'TURNO': 'Manhã',
+      'FUNÇÃO': 'Recepcionista',
+    },
+  );
+}
+
 class _FuncionariosPageState extends State<FuncionariosPage> {
   @override
   Widget build(BuildContext context) {
@@ -43,6 +65,8 @@ class _FuncionariosPageState extends State<FuncionariosPage> {
           const TituloPagina(
             "FUNCIONÁRIOS",
             "Lista de funcionários:",
+            onExportar: handleExportarClick,
+            onNovoItem: handleNovoItemClick,
           ),
 
           // ESPACAMENTO DO TITULO PRO CORPO

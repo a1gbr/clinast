@@ -31,6 +31,29 @@ class PacientesPage extends StatefulWidget {
   State<PacientesPage> createState() => _PacientesPageState();
 }
 
+void handleExportarClick() {
+  // Handle Exportar button click here
+}
+
+void handleNovoItemClick() {
+  pacientes.add(
+    {
+      'ID': "x",
+      'NOME': 'Paciente dos Santos Silva Júnior',
+      'DATA NASC': '1998/05/25',
+      'RUA': 'R. NASCIMENTO DE AGOSTO',
+      'BAIRRO': 'CENTRO',
+      'CIDADE': 'OLIVEIRA',
+      'CEP': '14445000',
+      'TELEFONE': '31 225444778',
+      'CPF': '***3248****',
+      'ALTURA': '1.80',
+      'PESO': '80',
+      'MEDICAMENTOS': 'Dipirona, Paracetamol',
+    },
+  );
+}
+
 class _PacientesPageState extends State<PacientesPage> {
   @override
   Widget build(BuildContext context) {
@@ -44,6 +67,8 @@ class _PacientesPageState extends State<PacientesPage> {
           const TituloPagina(
             "PACIENTES",
             "Lista de pacientes:",
+            onExportar: handleExportarClick,
+            onNovoItem: handleNovoItemClick,
           ),
 
           // ESPACAMENTO DO TITULO PRO CORPO

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 import '../back_falso/dt_consultas.dart';
 import '../widgets/tabela.dart';
@@ -23,10 +24,31 @@ class ConsultasPage extends StatefulWidget {
     required this.itens,
     super.key,
   });
+
   final List<String> colunas;
   final List<Map<String, dynamic>> itens;
   @override
   State<ConsultasPage> createState() => _ConsultasPageState();
+}
+
+void handleExportarClick() {
+  // Handle Exportar button click here
+}
+
+void handleNovoItemClick() {
+  consultas.add(
+    {
+      'ID': "x",
+      'PACIENTE': 'Paciente dos Santos Silva',
+      'MÉDICO': 'Médico Médico',
+      'TIPO': 'Clin. Geral',
+      'DATA': DateFormat('dd/MM').format(DateTime(2023, 07, 04, 16, 30)),
+      'HORA': DateFormat('HH:mm').format(DateTime(2023, 07, 04, 16, 30)),
+      'VALOR': '100.00',
+      'CONVÊNIO': 'Convênio',
+      'STATUS': 'Concluído',
+    },
+  );
 }
 
 class _ConsultasPageState extends State<ConsultasPage> {
@@ -42,6 +64,8 @@ class _ConsultasPageState extends State<ConsultasPage> {
           const TituloPagina(
             "CONSULTAS",
             "Lista de consultas:",
+            onExportar: handleExportarClick,
+            onNovoItem: handleNovoItemClick,
           ),
 
           // ESPACAMENTO DO TITULO PRO CORPO

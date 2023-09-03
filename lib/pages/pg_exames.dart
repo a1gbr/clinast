@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 import '../back_falso/dt_exames.dart';
 import '../widgets/tabela.dart';
@@ -30,6 +31,27 @@ class ExamesPage extends StatefulWidget {
   State<ExamesPage> createState() => _ExamesPageState();
 }
 
+void handleExportarClick() {
+  // Handle Exportar button click here
+}
+
+void handleNovoItemClick() {
+  exames.add(
+    {
+      'ID': "x",
+      'PACIENTE': 'Paciente dos Santos',
+      'MÉDICO': 'Médico Médico ',
+      'TIPO': 'Ultrassonografia',
+      'SOLICITANTE': 'Solicitante',
+      'DATA': DateFormat('dd/MM').format(DateTime(2023, 07, 04, 16, 30)),
+      'HORA': DateFormat('HH:mm').format(DateTime(2023, 07, 04, 16, 30)),
+      'VALOR': '100.00',
+      'CONVÊNIO': 'Convênio',
+      'STATUS': 'Concluído',
+    },
+  );
+}
+
 class _ExamesPageState extends State<ExamesPage> {
   @override
   Widget build(BuildContext context) {
@@ -43,6 +65,8 @@ class _ExamesPageState extends State<ExamesPage> {
           const TituloPagina(
             "EXAMES",
             "Lista de exames:",
+            onExportar: handleExportarClick,
+            onNovoItem: handleNovoItemClick,
           ),
 
           // ESPACAMENTO DO TITULO PRO CORPO

@@ -12,6 +12,7 @@ final List<String> tituloColunas = [
   'CIDADE',
   'CEP',
   'TELEFONE',
+  'TURNO',
   'CRM',
   'ESPECIALIDADE',
 ];
@@ -30,6 +31,30 @@ class MedicosPage extends StatefulWidget {
   State<MedicosPage> createState() => _MedicosPageState();
 }
 
+void handleExportarClick() {
+  // Handle Exportar button click here
+}
+
+void handleNovoItemClick() {
+  medicos.add(
+    {
+      'ID': "x",
+      'NOME': 'Doutor dos Santos Silva Júnior',
+      'DATA NASC': '1998/05/25',
+      'RUA': 'R. NASCIMENTO DE AGOSTO',
+      'BAIRRO': 'CENTRO',
+      'CIDADE': 'OLIVEIRA',
+      'CEP': '14445000',
+      'TELEFONE': '31 225444778',
+      'CPF': '***3248****',
+      'TURNO': 'Manhã',
+      'FUNÇÃO': 'Médico',
+      'CRM': '***324824**',
+      'ESPECIALIDADE': 'Cardiologista',
+    },
+  );
+}
+
 class _MedicosPageState extends State<MedicosPage> {
   @override
   Widget build(BuildContext context) {
@@ -42,6 +67,8 @@ class _MedicosPageState extends State<MedicosPage> {
           const TituloPagina(
             "MÉDICOS",
             "Lista de Doutores:",
+            onExportar: handleExportarClick,
+            onNovoItem: handleNovoItemClick,
           ),
 
           // ESCAPAMENTO DO TITULO PRO CORPO

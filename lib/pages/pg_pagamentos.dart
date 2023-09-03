@@ -31,6 +31,26 @@ class PagamentosPage extends StatefulWidget {
   State<PagamentosPage> createState() => _PagamentosPageState();
 }
 
+void handleExportarClick() {
+  // Handle Exportar button click here
+}
+
+void handleNovoItemClick() {
+  pagamentos.add(
+    {
+      'ID': "x",
+      'PROCEDIMENTO': 'Consulta',
+      'PACIENTE': 'Paciente da Silva',
+      'MÉDICO': 'Médico Médico',
+      'FORMA DE PAGAMENTO': 'PIX',
+      'VALOR': '200.00',
+      'DESCONTO': '30%',
+      'CODIGO DE PAGAMENTO': '123456789',
+      'STATUS': 'Concluído',
+    },
+  );
+}
+
 class _PagamentosPageState extends State<PagamentosPage> {
   @override
   Widget build(BuildContext context) {
@@ -44,6 +64,8 @@ class _PagamentosPageState extends State<PagamentosPage> {
           const TituloPagina(
             "PAGAMENTOS",
             "Lista de pagamentos:",
+            onExportar: handleExportarClick,
+            onNovoItem: handleNovoItemClick,
           ),
 
           // ESPACAMENTO DO TITULO PRO CORPO

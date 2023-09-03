@@ -1,6 +1,6 @@
-import '../../classes/pessoas/pessoa.dart';
+import '../../classes/pessoas/funcionario.dart';
 
-class Medico extends Pessoa {
+class Medico extends Funcionario {
   final String crm;
   final String especialidade;
 
@@ -13,6 +13,8 @@ class Medico extends Pessoa {
     required String cep,
     required String telefone,
     required String cpf,
+    required String turno,
+    required String funcao,
     required this.crm,
     required this.especialidade,
   }) : super(
@@ -24,6 +26,8 @@ class Medico extends Pessoa {
           cep: cep,
           telefone: telefone,
           cpf: cpf,
+          turno: turno,
+          funcao: funcao,
         );
 
   @override

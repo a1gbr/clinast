@@ -3,10 +3,18 @@ import 'package:flutter/material.dart';
 import '../widgets/style/estilo_botao.dart';
 
 class TituloPagina extends StatelessWidget {
-  const TituloPagina(this.tituloPagina, this.descricaoPagina, {super.key});
+  const TituloPagina(
+    this.tituloPagina,
+    this.descricaoPagina, {
+    required this.onExportar,
+    required this.onNovoItem,
+    Key? key,
+  }) : super(key: key);
 
   final String tituloPagina;
   final String descricaoPagina;
+  final VoidCallback onExportar;
+  final VoidCallback onNovoItem;
 
   @override
   Widget build(BuildContext context) {
@@ -43,9 +51,7 @@ class TituloPagina extends StatelessWidget {
                 // BOTAO DE EXPORTAR
                 ElevatedButton(
                   style: estiloBotao,
-                  onPressed: () {
-                    // FUNCAO PARA EXPORTAR TABELA DA PAGINA ATUAL
-                  },
+                  onPressed: onExportar,
                   child: const Row(
                     children: [
                       Icon(
@@ -68,9 +74,7 @@ class TituloPagina extends StatelessWidget {
                 // BOTAO DE ITEM NOVO
                 ElevatedButton(
                   style: estiloBotao,
-                  onPressed: () {
-                    // ABRIR O MODAL/PAGINA PARA CRIACAO DE NOVO ITEM
-                  },
+                  onPressed: onNovoItem,
                   child: const Row(
                     children: [
                       Icon(

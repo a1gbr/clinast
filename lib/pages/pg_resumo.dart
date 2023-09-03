@@ -9,6 +9,14 @@ class ResumoPage extends StatefulWidget {
   State<ResumoPage> createState() => _ResumoPageState();
 }
 
+void handleExportarClick() {
+  // Handle Exportar button click here
+}
+
+void handleNovoItemClick() {
+  // Handle Novo Item button click here
+}
+
 class _ResumoPageState extends State<ResumoPage> {
   @override
   Widget build(BuildContext context) {
@@ -19,6 +27,8 @@ class _ResumoPageState extends State<ResumoPage> {
           TituloPagina(
             "RESUMO",
             "Painel de Controle.",
+            onExportar: handleExportarClick,
+            onNovoItem: handleNovoItemClick,
           ),
 
           // ESPACAMENTO DO TITULO PRO CORPO

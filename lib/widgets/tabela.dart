@@ -26,11 +26,11 @@ class _DynamicDataTableState extends State<DynamicDataTable> {
         children: [
           DataTable(
             columns: widget.colunas.map(
-              (label) {
+              (titulo) {
                 // CRIA AS COLUNAS
                 return DataColumn(
                   label: Text(
-                    label,
+                    titulo,
                     style: const TextStyle(fontWeight: FontWeight.bold),
                   ),
                 );
@@ -40,9 +40,9 @@ class _DynamicDataTableState extends State<DynamicDataTable> {
             rows: widget.itens.map(
               (linha) {
                 // VERIFICA SE A LINHA ESTA SELECIONADA
-                final estaSelecionado = linhaSelecionada.contains(linha);
+                final isSelected = linhaSelecionada.contains(linha);
                 return DataRow(
-                  selected: estaSelecionado,
+                  selected: isSelected,
                   // CRIA O CHECKBOX
                   onSelectChanged: (selecionado) {
                     setState(
@@ -70,7 +70,7 @@ class _DynamicDataTableState extends State<DynamicDataTable> {
                           // SELECIONA A LINHA QUANDO SELECIONA A CELL
                           setState(
                             () {
-                              if (estaSelecionado) {
+                              if (isSelected) {
                                 linhaSelecionada.remove(linha);
                               } else {
                                 linhaSelecionada.add(linha);
