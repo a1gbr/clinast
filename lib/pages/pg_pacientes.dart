@@ -36,7 +36,7 @@ void handleExportarClick() {
 }
 
 void handleNovoItemClick() {
-  pacientes.add(
+  /* pacientes.add(
     {
       'ID': "x",
       'NOME': 'Paciente dos Santos Silva Júnior',
@@ -51,7 +51,7 @@ void handleNovoItemClick() {
       'PESO': '80',
       'MEDICAMENTOS': 'Dipirona, Paracetamol',
     },
-  );
+  ); */
 }
 
 class _PacientesPageState extends State<PacientesPage> {
@@ -80,7 +80,7 @@ class _PacientesPageState extends State<PacientesPage> {
               // CHAMANDO O WIDGET TABELA
               child: DynamicDataTable(
                 colunas: tituloColunas,
-                itens: pacientes,
+                itens: const [],
                 naSelecao: (selecionados) {
                   // LOG PRO DEBUG
                   print(selecionados);

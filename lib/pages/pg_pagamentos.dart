@@ -36,7 +36,7 @@ void handleExportarClick() {
 }
 
 void handleNovoItemClick() {
-  pagamentos.add(
+  /* pagamentos.add(
     {
       'ID': "x",
       'PROCEDIMENTO': 'Consulta',
@@ -48,7 +48,7 @@ void handleNovoItemClick() {
       'CODIGO DE PAGAMENTO': '123456789',
       'STATUS': 'Concluído',
     },
-  );
+  ); */
 }
 
 class _PagamentosPageState extends State<PagamentosPage> {
@@ -77,7 +77,7 @@ class _PagamentosPageState extends State<PagamentosPage> {
               // CHAMANDO O WIDGET TABELA
               child: DynamicDataTable(
                 colunas: tituloColunas,
-                itens: pagamentos,
+                itens: const [],
                 naSelecao: (selecionados) {
                   //
                   print(selecionados);

@@ -35,7 +35,7 @@ void handleExportarClick() {
 }
 
 void handleNovoItemClick() {
-  funcionarios.add(
+  /* funcionarios.add(
     {
       'ID': 'x',
       'NOME': 'Funcionario dos Santos Silva Júnior',
@@ -49,7 +49,7 @@ void handleNovoItemClick() {
       'TURNO': 'Manhã',
       'FUNÇÃO': 'Recepcionista',
     },
-  );
+  ); */
 }
 
 class _FuncionariosPageState extends State<FuncionariosPage> {
@@ -78,7 +78,7 @@ class _FuncionariosPageState extends State<FuncionariosPage> {
               // CHAMANDO O WIDGET TABELA
               child: DynamicDataTable(
                 colunas: tituloColunas,
-                itens: funcionarios,
+                itens: const [],
                 naSelecao: (selecionados) {
                   // LOG PRO DEBUG
                   print(selecionados);

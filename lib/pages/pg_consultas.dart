@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
-import '../back_falso/dt_consultas.dart';
 import '../widgets/tabela.dart';
 import '../widgets/titulo_pagina.dart';
 
@@ -36,7 +34,7 @@ void handleExportarClick() {
 }
 
 void handleNovoItemClick() {
-  consultas.add(
+  /* consultas.add(
     {
       'ID': "x",
       'PACIENTE': 'Paciente dos Santos Silva',
@@ -48,14 +46,14 @@ void handleNovoItemClick() {
       'CONVÊNIO': 'Convênio',
       'STATUS': 'Concluído',
     },
-  );
+  ); */
 }
 
 class _ConsultasPageState extends State<ConsultasPage> {
   @override
   Widget build(BuildContext context) {
     // GERANDO BACK FALSO
-    consultas.isEmpty ? geradorConsultas() : null;
+    // consultas.isEmpty ? geradorConsultas() : null;
 
     return Scaffold(
       body: Column(
@@ -77,7 +75,7 @@ class _ConsultasPageState extends State<ConsultasPage> {
               // CHAMANDO O WIDGET TABELA
               child: DynamicDataTable(
                 colunas: tituloColunas,
-                itens: consultas,
+                itens: const [],
                 naSelecao: (selecionados) {
                   // LOG PRO DEBUG
                   print(selecionados);

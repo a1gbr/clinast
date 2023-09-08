@@ -1,29 +1,26 @@
-class Pagamento {
-  static int _idCounter = 0;
+import 'consulta.dart';
+import 'exame.dart';
+import 'shared/estado.dart';
 
-  final int id;
-  final String procedimento;
-  final String nomePaciente;
-  final String nomeMedico;
-  final String formaDePagamento;
-  final String valor;
-  final String confirmacaoPagamento;
-  final String desconto;
-  final String status;
+class Pagamento {
+  Exame? exame;
+  Consulta? consulta;
+  final StatusPagamento status;
+  final String formaPagamento;
+  final String codPagamento;
+  late double? valor;
 
   Pagamento({
-    required this.procedimento,
-    required this.nomePaciente,
-    required this.nomeMedico,
-    required this.formaDePagamento,
-    required this.valor,
-    required this.confirmacaoPagamento,
-    required this.desconto,
+    this.exame,
+    this.consulta,
     required this.status,
-  }) : id = ++_idCounter;
-
-  @override
-  String toString() {
-    return 'Pagamento(id: $id, procedimento: $procedimento, paciente: $nomePaciente, medico: $nomeMedico, forma de pagamento: $formaDePagamento, valor: $valor, codigo confirmacao de pagamento: $confirmacaoPagamento, desconto: $desconto, status: $status)';
+    required this.formaPagamento,
+    required this.codPagamento,
+  }) {
+    valor = exame != null
+        ? exame!.valor
+        : consulta != null
+            ? consulta!.valor
+            : null;
   }
 }

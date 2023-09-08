@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
 import '../back_falso/dt_exames.dart';
 import '../widgets/tabela.dart';
@@ -36,7 +35,7 @@ void handleExportarClick() {
 }
 
 void handleNovoItemClick() {
-  exames.add(
+  /* exames.add(
     {
       'ID': "x",
       'PACIENTE': 'Paciente dos Santos',
@@ -49,7 +48,7 @@ void handleNovoItemClick() {
       'CONVÊNIO': 'Convênio',
       'STATUS': 'Concluído',
     },
-  );
+  ); */
 }
 
 class _ExamesPageState extends State<ExamesPage> {
@@ -78,7 +77,7 @@ class _ExamesPageState extends State<ExamesPage> {
               // CHAMANDO O WIDGET TABELA
               child: DynamicDataTable(
                   colunas: tituloColunas,
-                  itens: exames,
+                  itens: const [],
                   naSelecao: (selecionados) {
                     // LOG PRO DEBUG
                     print(selecionados);

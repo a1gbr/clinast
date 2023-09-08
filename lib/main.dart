@@ -137,8 +137,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
               // CONSULTAS
               NavigationRailDestination(
-                icon: Icon(Icons.monitor_heart_outlined),
-                selectedIcon: Icon(Icons.monitor_heart),
+                icon: Icon(Icons.assignment_outlined),
+                selectedIcon: Icon(Icons.assignment),
                 label: Text('C O N S U L T A S'),
 
                 // ESPACAMENTO PARA PROXIMA CATEGORIA

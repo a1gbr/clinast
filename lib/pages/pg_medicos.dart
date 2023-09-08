@@ -36,7 +36,7 @@ void handleExportarClick() {
 }
 
 void handleNovoItemClick() {
-  medicos.add(
+  /* medicos.add(
     {
       'ID': "x",
       'NOME': 'Doutor dos Santos Silva Júnior',
@@ -52,7 +52,7 @@ void handleNovoItemClick() {
       'CRM': '***324824**',
       'ESPECIALIDADE': 'Cardiologista',
     },
-  );
+  ); */
 }
 
 class _MedicosPageState extends State<MedicosPage> {
@@ -80,7 +80,7 @@ class _MedicosPageState extends State<MedicosPage> {
               // CHAMANDO O WIDGET TABELA
               child: DynamicDataTable(
                 colunas: tituloColunas,
-                itens: medicos,
+                itens: const [],
                 naSelecao: (selecionados) {
                   // LOG PRO DEBUG
                   print(selecionados);
