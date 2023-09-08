@@ -8,11 +8,11 @@ class Procedimento {
   final Paciente paciente;
   final DateTime dataAtendimento;
   final DateTime horaAtendimento;
-  final StatusProcedimento statusProcedimento;
-  final StatusPessoa statusPaciente;
-  final bool convenio;
-  final String? tipoConvenio;
-  final bool retorno;
+  StatusProcedimento statusProcedimento;
+  StatusPessoa statusPaciente;
+  bool convenio;
+  String? tipoConvenio;
+  bool retorno;
 
   Procedimento({
     required this.id,

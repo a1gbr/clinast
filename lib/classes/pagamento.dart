@@ -5,10 +5,10 @@ import 'shared/estado.dart';
 class Pagamento {
   Exame? exame;
   Consulta? consulta;
-  final StatusPagamento status;
+  StatusPagamento status;
   final String formaPagamento;
   final String codPagamento;
-  late double? valor;
+  late final double? valor;
 
   Pagamento({
     this.exame,

@@ -1,10 +1,9 @@
-import 'package:clinast/classes/shared/medicamento.dart';
-
 import 'pessoa.dart';
+import 'shared/medicamento.dart';
 
 class Paciente extends Pessoa {
-  final double? altura;
-  final double? peso;
+  double? altura;
+  double? peso;
   List<Medicamento>? medicamentos;
 
   Paciente({

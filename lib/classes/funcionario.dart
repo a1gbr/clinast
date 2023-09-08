@@ -2,7 +2,7 @@ import 'pessoa.dart';
 import 'shared/cargo.dart';
 
 class Funcionario extends Pessoa {
-  final Cargo cargo;
+  Cargo cargo;
   List<String>? turno;
 
   Funcionario({

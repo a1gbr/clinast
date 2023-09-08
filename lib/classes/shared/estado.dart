@@ -1,13 +1,10 @@
 enum StatusProcedimento {
   agendado,
   confirmado,
-
   concluido,
   retorno,
-
   emAndamento,
   cancelado,
-
   pago,
   encerrado,
 }

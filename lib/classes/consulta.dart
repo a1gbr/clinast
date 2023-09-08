@@ -5,8 +5,8 @@ import 'shared/especialidade.dart';
 import 'shared/estado.dart';
 
 class Consulta extends Procedimento {
-  late Especialidade tipoConsulta;
-  late double valor;
+  late final Especialidade tipoConsulta;
+  late final double valor;
 
   Consulta({
     required int id,

@@ -10,13 +10,13 @@ class Pessoa {
   final int id;
   final String nome;
   final DateTime dataNascimento;
-  final String endereco;
-  final String bairro;
-  final String cidade;
-  final String cep;
-  final String telefone;
+  String endereco;
+  String bairro;
+  String cidade;
+  String cep;
+  String telefone;
   final String cpf;
-  late String hashedCPF;
+  late final String hashedCPF;
 
   Pessoa({
     required this.nome,
