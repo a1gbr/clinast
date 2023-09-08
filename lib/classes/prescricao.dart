@@ -1,6 +1,5 @@
 import 'medico.dart';
 import 'paciente.dart';
-import 'shared/estado.dart';
 import 'shared/medicamento.dart';
 
 class Prescricao {
@@ -11,7 +10,6 @@ class Prescricao {
   final DateTime dataAtendimento;
   final DateTime horaAtendimento;
   final DateTime dataValidade;
-  final StatusProcedimento status;
 
   Prescricao({
     required this.id,
@@ -21,6 +19,5 @@ class Prescricao {
     required this.dataAtendimento,
     required this.horaAtendimento,
     required this.dataValidade,
-    required this.status,
   });
 }
