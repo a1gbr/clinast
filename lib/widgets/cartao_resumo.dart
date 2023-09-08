@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../widgets/style/cores.dart';
+import 'shared/cores.dart';
 
 class CardResumo extends StatefulWidget {
   const CardResumo(this.icon, this.tituloCard, this.valorCard, this.descCard,

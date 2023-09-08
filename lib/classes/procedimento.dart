@@ -8,7 +8,8 @@ class Procedimento {
   final Paciente paciente;
   final DateTime dataAtendimento;
   final DateTime horaAtendimento;
-  final StatusProcedimento status;
+  final StatusProcedimento statusProcedimento;
+  final StatusPessoa statusPaciente;
   final bool convenio;
   final String? tipoConvenio;
   final bool retorno;
@@ -19,7 +20,8 @@ class Procedimento {
     required this.paciente,
     required this.dataAtendimento,
     required this.horaAtendimento,
-    required this.status,
+    required this.statusProcedimento,
+    this.statusPaciente = StatusPessoa.aguardando,
     this.convenio = false,
     this.tipoConvenio,
     this.retorno = false,

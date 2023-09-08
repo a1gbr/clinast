@@ -8,7 +8,7 @@ import 'pages/pg_pacientes.dart';
 import 'pages/pg_pagamentos.dart';
 import 'pages/pg_resumo.dart';
 import 'widgets/botao_navegacao.dart';
-import 'widgets/style/cores.dart';
+import 'widgets/shared/cores.dart';
 
 void main() {
   runApp(const MyApp());

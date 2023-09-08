@@ -2,7 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
-import '../widgets/style/cores.dart';
+import 'shared/cores.dart';
 
 class BotaoDeNavegacao extends StatelessWidget {
   const BotaoDeNavegacao({super.key, this.onPressed});

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../widgets/style/estilo_botao.dart';
+import 'shared/estilo_botao.dart';
 
 class TituloPagina extends StatelessWidget {
   const TituloPagina(
