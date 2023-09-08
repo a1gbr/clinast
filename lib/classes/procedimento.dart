@@ -4,8 +4,8 @@ import 'shared/estado.dart';
 
 class Procedimento {
   static int _idCounter = 0;
-
   final int id;
+
   final Medico medico;
   final Paciente paciente;
   final DateTime dataAtendimento;

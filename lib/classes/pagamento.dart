@@ -3,6 +3,9 @@ import 'exame.dart';
 import 'shared/estado.dart';
 
 class Pagamento {
+  static int _idCounter = 0;
+  final int id;
+
   Exame? exame;
   Consulta? consulta;
   StatusPagamento status;
@@ -16,11 +19,6 @@ class Pagamento {
     required this.status,
     required this.formaPagamento,
     required this.codPagamento,
-  }) {
-    valor = exame != null
-        ? exame!.valor
-        : consulta != null
-            ? consulta!.valor
-            : null;
-  }
+  })  : id = ++_idCounter,
+        valor = exame != null ? exame.valor : consulta?.valor;
 }

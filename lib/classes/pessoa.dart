@@ -6,8 +6,8 @@ import 'shared/validacao_cpf.dart';
 
 class Pessoa {
   static int _idCounter = 0;
-
   final int id;
+
   final String nome;
   final DateTime dataNascimento;
   String endereco;
