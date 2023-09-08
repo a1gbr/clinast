@@ -9,7 +9,6 @@ class Exame extends Procedimento {
   final double valor;
 
   Exame({
-    required int id,
     required Medico medico,
     required Paciente paciente,
     required DateTime dataAtendimento,
@@ -22,7 +21,6 @@ class Exame extends Procedimento {
     bool retorno = false,
   })  : valor = tipoExame.valor,
         super(
-          id: id,
           medico: medico,
           paciente: paciente,
           dataAtendimento: dataAtendimento,

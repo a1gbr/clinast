@@ -9,7 +9,6 @@ class Consulta extends Procedimento {
   late final double valor;
 
   Consulta({
-    required int id,
     required Medico medico,
     required Paciente paciente,
     required DateTime dataAtendimento,
@@ -20,7 +19,6 @@ class Consulta extends Procedimento {
     String? tipoConvenio,
     bool retorno = false,
   }) : super(
-          id: id,
           medico: medico,
           paciente: paciente,
           dataAtendimento: dataAtendimento,
