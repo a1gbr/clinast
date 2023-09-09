@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../widgets/style/estilo_botao.dart';
 
+import '../pages/md_cadastro.dart';
+
 class TituloPagina extends StatelessWidget {
   const TituloPagina(
     this.tituloPagina,
@@ -74,11 +76,33 @@ class TituloPagina extends StatelessWidget {
                 // BOTAO DE ITEM NOVO
                 ElevatedButton(
                   style: estiloBotao,
-                  onPressed: onNovoItem,
+                  onPressed: () {
+                    showDialog<Form>(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                          content:
+                              const ModalCadastro(), // Supondo que ModalCadastro seja um Widget
+                          actions: <Widget>[
+                            TextButton(
+                              onPressed: () => {print("Pressionou")},
+                              child: Text('Cadastrar'),
+                            ),
+                            TextButton(
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },
+                              child: Text("Fechar"),
+                            ),
+                          ],
+                        );
+                      },
+                    );
+                  },
                   child: const Row(
                     children: [
                       Icon(
-                        (Icons.add),
+                        Icons.add,
                       ),
                       Padding(
                         padding: EdgeInsets.all(2),
