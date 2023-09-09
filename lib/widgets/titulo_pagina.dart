@@ -85,14 +85,14 @@ class TituloPagina extends StatelessWidget {
                               const ModalCadastro(), // Supondo que ModalCadastro seja um Widget
                           actions: <Widget>[
                             TextButton(
-                              onPressed: () => {print("Pressionou")},
-                              child: Text('Cadastrar'),
-                            ),
-                            TextButton(
                               onPressed: () {
                                 Navigator.of(context).pop();
                               },
-                              child: Text("Fechar"),
+                              child: Text("CANCELAR"),
+                            ),
+                            TextButton(
+                              onPressed: () => {print("Pressionou")},
+                              child: Text('CONFIRMAR'),
                             ),
                           ],
                         );
