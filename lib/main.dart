@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
-import 'pages/pg_consultas.dart';
-import 'pages/pg_exames.dart';
-import 'pages/pg_funcionarios.dart';
-import 'pages/pg_medicos.dart';
-import 'pages/pg_pacientes.dart';
-import 'pages/pg_pagamentos.dart';
-import 'pages/pg_resumo.dart';
-import 'widgets/botao_navegacao.dart';
-import 'widgets/shared/cores.dart';
+import 'presentation/screens/pg_consultas.dart';
+import 'presentation/screens/pg_exames.dart';
+import 'presentation/screens/pg_funcionarios.dart';
+import 'presentation/screens/pg_medicos.dart';
+import 'presentation/screens/pg_pacientes.dart';
+import 'presentation/screens/pg_pagamentos.dart';
+import 'presentation/screens/pg_resumo.dart';
+import 'presentation/widgets/botao_navegacao.dart';
+import 'presentation/widgets/shared/cores.dart';
 
 void main() {
   runApp(const MyApp());
