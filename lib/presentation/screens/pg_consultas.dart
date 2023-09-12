@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../domain/models/consulta.dart';
 import '../widgets/tabela.dart';
 import '../widgets/titulo_pagina.dart';
 
@@ -30,32 +29,13 @@ class ConsultasPage extends StatefulWidget {
   State<ConsultasPage> createState() => _ConsultasPageState();
 }
 
-void handleExportarClick() {
-  // Handle Exportar button click here
-}
+void handleExportarClick() {}
 
-void handleNovoItemClick() {
-  /* consultas.add(
-    {
-      'ID': "x",
-      'PACIENTE': 'Paciente dos Santos Silva',
-      'MÉDICO': 'Médico Médico',
-      'TIPO': 'Clin. Geral',
-      'DATA': DateFormat('dd/MM').format(DateTime(2023, 07, 04, 16, 30)),
-      'HORA': DateFormat('HH:mm').format(DateTime(2023, 07, 04, 16, 30)),
-      'VALOR': '100.00',
-      'CONVÊNIO': 'Convênio',
-      'STATUS': 'Concluído',
-    },
-  ); */
-}
+void handleNovoItemClick() {}
 
 class _ConsultasPageState extends State<ConsultasPage> {
   @override
   Widget build(BuildContext context) {
-    // GERANDO BACK FALSO
-    // consultas.isEmpty ? geradorConsultas() : null;
-
     return Scaffold(
       body: Column(
         children: <Widget>[
@@ -74,7 +54,7 @@ class _ConsultasPageState extends State<ConsultasPage> {
           Expanded(
             child: Center(
               // CHAMANDO O WIDGET TABELA
-              child: TabelaDinamica<Consulta>(
+              child: TabelaDinamica(
                 colunas: tituloColunas,
                 itens: const [],
                 naSelecao: (selecionados) {

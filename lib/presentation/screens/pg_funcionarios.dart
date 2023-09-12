@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../domain/models/funcionario.dart';
 import '../widgets/tabela.dart';
 import '../widgets/titulo_pagina.dart';
 
@@ -30,34 +29,13 @@ class FuncionariosPage extends StatefulWidget {
   State<FuncionariosPage> createState() => _FuncionariosPageState();
 }
 
-void handleExportarClick() {
-  // Handle Exportar button click here
-}
+void handleExportarClick() {}
 
-void handleNovoItemClick() {
-  /* funcionarios.add(
-    {
-      'ID': 'x',
-      'NOME': 'Funcionario dos Santos Silva Júnior',
-      'DATA NASC': '1998/05/25',
-      'RUA': 'R. NASCIMENTO DE AGOSTO',
-      'BAIRRO': 'CENTRO',
-      'CIDADE': 'OLIVEIRA',
-      'CEP': '14445000',
-      'TELEFONE': '31 225444778',
-      'CPF': '***3248****',
-      'TURNO': 'Manhã',
-      'FUNÇÃO': 'Recepcionista',
-    },
-  ); */
-}
+void handleNovoItemClick() {}
 
 class _FuncionariosPageState extends State<FuncionariosPage> {
   @override
   Widget build(BuildContext context) {
-    // GERANDO BACK FALSO
-    // funcionarios.isEmpty ? geradorFuncionarios() : null;
-
     return Scaffold(
       body: Column(
         children: <Widget>[
@@ -76,7 +54,7 @@ class _FuncionariosPageState extends State<FuncionariosPage> {
           Expanded(
             child: Center(
               // CHAMANDO O WIDGET TABELA
-              child: TabelaDinamica<Funcionario>(
+              child: TabelaDinamica(
                 colunas: tituloColunas,
                 itens: const [],
                 naSelecao: (selecionados) {

@@ -1,12 +1,13 @@
 import 'medico.dart';
 import 'paciente.dart';
 import 'procedimento.dart';
-import 'shared/estado.dart';
+import 'shared/status.dart';
 import 'shared/tipo_exame.dart';
 
 class Exame extends Procedimento {
   final TipoExame tipoExame;
   final double valor;
+  final Medico? solicitante;
 
   Exame({
     required Medico medico,
@@ -14,6 +15,7 @@ class Exame extends Procedimento {
     required DateTime dataAtendimento,
     required DateTime horaAtendimento,
     required StatusProcedimento statusProcedimento,
+    required this.solicitante,
     required this.tipoExame,
     bool convenio = false,
     String? tipoConvenio,
@@ -31,30 +33,7 @@ class Exame extends Procedimento {
         );
 
   @override
-  String pegarValor(String coluna) {
-    switch (coluna) {
-      case 'ID':
-        return id.toString();
-      case 'Exame':
-        return tipoExame.toString();
-      case 'Paciente':
-        return paciente.nome;
-      case 'Data':
-        return dataAtendimento.toString();
-      case 'Hora':
-        return horaAtendimento.toString();
-      case 'Status':
-        return statusProcedimento.toString();
-      case 'Valor':
-        return valor.toString();
-      case 'Tipo':
-        return tipoExame.toString();
-      case 'Convênio':
-        return convenio ? 'Sim' : 'Não';
-      case 'Tipo Convênio':
-        return tipoConvenio ?? '';
-      default:
-        return '';
-    }
+  String toString() {
+    return super.id.toString();
   }
 }

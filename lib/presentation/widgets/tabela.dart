@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 
-import '../../domain/utils/item_tabela.dart';
-
-class TabelaDinamica<T extends ItemTabela> extends StatefulWidget {
+class TabelaDinamica extends StatefulWidget {
   final List<String> colunas;
-  final List<T> itens;
-  final Function(List<T>) naSelecao;
+  final List<Map<String, dynamic>> itens;
+  final Function(List<Map<String, dynamic>>) naSelecao;
 
   const TabelaDinamica({
     Key? key,
@@ -15,12 +13,11 @@ class TabelaDinamica<T extends ItemTabela> extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<TabelaDinamica<T>> createState() => _TabelaDinamicaState<T>();
+  State<TabelaDinamica> createState() => _TabelaDinamicaState();
 }
 
-class _TabelaDinamicaState<T extends ItemTabela>
-    extends State<TabelaDinamica<T>> {
-  List<T> linhasSelecionadas = [];
+class _TabelaDinamicaState extends State<TabelaDinamica> {
+  List<Map<String, dynamic>> linhasSelecionadas = [];
 
   @override
   Widget build(BuildContext context) {
@@ -64,9 +61,10 @@ class _TabelaDinamicaState<T extends ItemTabela>
                   // CRIA AS CELULAS
                   cells: widget.colunas.map(
                     (coluna) {
-                      String valorCelula = linha.pegarValor(coluna);
                       return DataCell(
-                        Text(valorCelula),
+                        Text(
+                          linha[coluna].toString(),
+                        ),
                         onTap: () {
                           // SELECIONA A LINHA QUANDO SELECIONA A CELL
                           setState(

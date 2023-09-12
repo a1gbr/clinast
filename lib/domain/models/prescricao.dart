@@ -1,9 +1,8 @@
-import '../utils/item_tabela.dart';
 import 'medico.dart';
 import 'paciente.dart';
 import 'shared/medicamento.dart';
 
-class Prescricao implements ItemTabela {
+class Prescricao {
   static int _idCounter = 0;
   final int id;
 
@@ -22,26 +21,4 @@ class Prescricao implements ItemTabela {
     required this.horaAtendimento,
     required this.dataValidade,
   }) : id = ++_idCounter;
-
-  @override
-  String pegarValor(String coluna) {
-    switch (coluna) {
-      case 'ID':
-        return id.toString();
-      case 'Médico':
-        return medico.nome;
-      case 'Paciente':
-        return paciente.nome;
-      case 'Medicamentos':
-        return medicamentos.map((med) => med.nome).join(', ');
-      case 'Data Atendimento':
-        return dataAtendimento.toString();
-      case 'Hora Atendimento':
-        return horaAtendimento.toString();
-      case 'Data Validade':
-        return dataValidade.toString();
-      default:
-        return '';
-    }
-  }
 }

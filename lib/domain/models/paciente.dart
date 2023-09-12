@@ -30,32 +30,7 @@ class Paciente extends Pessoa {
         );
 
   @override
-  String pegarValor(String coluna) {
-    switch (coluna) {
-      case 'ID':
-        return id.toString();
-      case 'Nome':
-        return nome;
-      case 'Nascimento':
-        return dataNascimento.toString();
-      case 'Endereço':
-        return endereco;
-      case 'Bairro':
-        return bairro;
-      case 'Cidade':
-        return cidade;
-      case 'CEP':
-        return cep;
-      case 'Telefone':
-        return telefone;
-      case 'Altura':
-        return altura?.toString() ?? '';
-      case 'Peso':
-        return peso?.toString() ?? '';
-      case 'Medicamentos':
-        return medicamentos?.map((med) => med.nome).join(', ') ?? '';
-      default:
-        return '';
-    }
+  String toString() {
+    return nome;
   }
 }

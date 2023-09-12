@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../domain/models/exame.dart';
+import '/domain/models/exame.dart';
 import '../widgets/tabela.dart';
 import '../widgets/titulo_pagina.dart';
 
@@ -25,38 +25,18 @@ class ExamesPage extends StatefulWidget {
     super.key,
   });
   final List<String> colunas;
-  final List<Map<String, dynamic>> itens;
+  final List<Exame> itens;
   @override
   State<ExamesPage> createState() => _ExamesPageState();
 }
 
-void handleExportarClick() {
-  // Handle Exportar button click here
-}
+void handleExportarClick() {}
 
-void handleNovoItemClick() {
-  /* exames.add(
-    {
-      'ID': "x",
-      'PACIENTE': 'Paciente dos Santos',
-      'MÉDICO': 'Médico Médico ',
-      'TIPO': 'Ultrassonografia',
-      'SOLICITANTE': 'Solicitante',
-      'DATA': DateFormat('dd/MM').format(DateTime(2023, 07, 04, 16, 30)),
-      'HORA': DateFormat('HH:mm').format(DateTime(2023, 07, 04, 16, 30)),
-      'VALOR': '100.00',
-      'CONVÊNIO': 'Convênio',
-      'STATUS': 'Concluído',
-    },
-  ); */
-}
+void handleNovoItemClick() {}
 
 class _ExamesPageState extends State<ExamesPage> {
   @override
   Widget build(BuildContext context) {
-    // GERANDO BACK FALSO
-    // exames.isEmpty ? geradorExames() : null;
-
     return Scaffold(
       body: Column(
         children: <Widget>[
@@ -75,9 +55,22 @@ class _ExamesPageState extends State<ExamesPage> {
           Expanded(
             child: Center(
               // CHAMANDO O WIDGET TABELA
-              child: TabelaDinamica<Exame>(
+              child: TabelaDinamica(
                   colunas: tituloColunas,
-                  itens: const [],
+                  itens: widget.itens.map((exame) {
+                    return {
+                      'ID': exame.id,
+                      'PACIENTE': exame.paciente,
+                      'MÉDICO': exame.medico,
+                      'TIPO': exame.tipoExame,
+                      'SOLICITANTE': exame.solicitante,
+                      'DATA': exame.dataAtendimento,
+                      'HORA': exame.horaAtendimento,
+                      'VALOR': exame.valor,
+                      'CONVÊNIO': exame.convenio,
+                      'STATUS': exame.statusProcedimento,
+                    };
+                  }).toList(),
                   naSelecao: (selecionados) {
                     // LOG PRO DEBUG
                     print(selecionados);

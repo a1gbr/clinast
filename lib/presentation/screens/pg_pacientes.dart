@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../../domain/models/paciente.dart';
-import '../../domain/utils/fake_database/db_pacientes.dart';
 import '../widgets/tabela.dart';
 import '../widgets/titulo_pagina.dart';
 
@@ -26,40 +25,20 @@ class PacientesPage extends StatefulWidget {
   });
 
   final List<String> colunas;
-  final List<Map<String, dynamic>> itens;
+  final List<Paciente> itens;
 
   @override
   State<PacientesPage> createState() => _PacientesPageState();
 }
 
-void handleExportarClick() {
-  // Handle Exportar button click here
-}
+void handleExportarClick() {}
 
-void handleNovoItemClick() {
-  /* pacientes.add(
-    {
-      'ID': "x",
-      'NOME': 'Paciente dos Santos Silva Júnior',
-      'DATA NASC': '1998/05/25',
-      'RUA': 'R. NASCIMENTO DE AGOSTO',
-      'BAIRRO': 'CENTRO',
-      'CIDADE': 'OLIVEIRA',
-      'CEP': '14445000',
-      'TELEFONE': '31 225444778',
-      'CPF': '***3248****',
-      'ALTURA': '1.80',
-      'PESO': '80',
-      'MEDICAMENTOS': 'Dipirona, Paracetamol',
-    },
-  ); */
-}
+void handleNovoItemClick() {}
 
 class _PacientesPageState extends State<PacientesPage> {
   @override
   Widget build(BuildContext context) {
     // GERANDO BACK FALSO
-    pacientes.isEmpty ? geradorPacientes() : null;
 
     return Scaffold(
       body: Column(
@@ -79,9 +58,21 @@ class _PacientesPageState extends State<PacientesPage> {
           Expanded(
             child: Center(
               // CHAMANDO O WIDGET TABELA
-              child: TabelaDinamica<Paciente>(
+              child: TabelaDinamica(
                 colunas: tituloColunas,
-                itens: const [],
+                itens: widget.itens.map((paciente) {
+                  return {
+                    'ID': paciente.id.toString(),
+                    'NOME': paciente.nome,
+                    'DATA NASC': paciente.dataNascimento,
+                    'CIDADE': paciente.cidade,
+                    'CEP': paciente.cep,
+                    'TELEFONE': paciente.telefone,
+                    'ALTURA': paciente.altura,
+                    'PESO': paciente.peso,
+                    'MEDICAMENTOS': paciente.medicamentos,
+                  };
+                }).toList(),
                 naSelecao: (selecionados) {
                   // LOG PRO DEBUG
                   print(selecionados);

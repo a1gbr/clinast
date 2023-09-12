@@ -2,7 +2,7 @@ import 'medico.dart';
 import 'paciente.dart';
 import 'procedimento.dart';
 import 'shared/especialidade.dart';
-import 'shared/estado.dart';
+import 'shared/status.dart';
 
 class Consulta extends Procedimento {
   late final Especialidade tipoConsulta;
@@ -32,28 +32,7 @@ class Consulta extends Procedimento {
   }
 
   @override
-  String pegarValor(String coluna) {
-    switch (coluna) {
-      case 'ID':
-        return id.toString();
-      case 'Consulta':
-        return medico.especialidade.toString();
-      case 'Paciente':
-        return paciente.nome;
-      case 'Data':
-        return dataAtendimento.toString();
-      case 'Hora':
-        return horaAtendimento.toString();
-      case 'Status':
-        return statusProcedimento.toString();
-      case 'Convênio':
-        return convenio ? 'Sim' : 'Não';
-      case 'Tipo Convênio':
-        return tipoConvenio ?? '';
-      case 'Retorno':
-        return retorno == true ? 'Sim' : 'Não';
-      default:
-        return '';
-    }
+  String toString() {
+    return super.id.toString();
   }
 }

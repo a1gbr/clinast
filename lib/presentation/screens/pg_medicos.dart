@@ -25,7 +25,7 @@ class MedicosPage extends StatefulWidget {
   });
 
   final List<String> colunas;
-  final List<Map<String, dynamic>> itens;
+  final List<Medico> itens;
 
   @override
   State<MedicosPage> createState() => _MedicosPageState();
@@ -35,32 +35,11 @@ void handleExportarClick() {
   // Handle Exportar button click here
 }
 
-void handleNovoItemClick() {
-  /* medicos.add(
-    {
-      'ID': "x",
-      'NOME': 'Doutor dos Santos Silva Júnior',
-      'DATA NASC': '1998/05/25',
-      'RUA': 'R. NASCIMENTO DE AGOSTO',
-      'BAIRRO': 'CENTRO',
-      'CIDADE': 'OLIVEIRA',
-      'CEP': '14445000',
-      'TELEFONE': '31 225444778',
-      'CPF': '***3248****',
-      'TURNO': 'Manhã',
-      'FUNÇÃO': 'Médico',
-      'CRM': '***324824**',
-      'ESPECIALIDADE': 'Cardiologista',
-    },
-  ); */
-}
+void handleNovoItemClick() {}
 
 class _MedicosPageState extends State<MedicosPage> {
   @override
   Widget build(BuildContext context) {
-    // GERANDO BACK FALSO
-    // medicos.isEmpty ? geradorMedicos() : null;
-
     return Scaffold(
       body: Column(
         children: <Widget>[
@@ -79,9 +58,21 @@ class _MedicosPageState extends State<MedicosPage> {
           Expanded(
             child: Center(
               // CHAMANDO O WIDGET TABELA
-              child: TabelaDinamica<Medico>(
+              child: TabelaDinamica(
                 colunas: tituloColunas,
-                itens: const [],
+                itens: widget.itens.map((medico) {
+                  return {
+                    'ID': medico.id,
+                    'NOME': medico.nome,
+                    'DATA NASC': medico.dataNascimento,
+                    'CIDADE': medico.cidade,
+                    'CEP': medico.cep,
+                    'TELEFONE': medico.telefone,
+                    'TURNO': medico.turno,
+                    'CRM': medico.crm,
+                    'ESPECIALIDADE': medico.especialidade,
+                  };
+                }).toList(),
                 naSelecao: (selecionados) {
                   // LOG PRO DEBUG
                   print(selecionados);

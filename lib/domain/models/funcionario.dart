@@ -1,9 +1,10 @@
+import '../models/shared/turno.dart';
 import 'pessoa.dart';
 import 'shared/cargo.dart';
 
 class Funcionario extends Pessoa {
   Cargo cargo;
-  List<String>? turno;
+  List<Turno> turno;
 
   Funcionario({
     required String nome,
@@ -28,30 +29,7 @@ class Funcionario extends Pessoa {
         );
 
   @override
-  String pegarValor(String coluna) {
-    switch (coluna) {
-      case 'ID':
-        return id.toString();
-      case 'Nome':
-        return nome;
-      case 'Nascimento':
-        return dataNascimento.toString();
-      case 'Endereço':
-        return endereco;
-      case 'Bairro':
-        return bairro;
-      case 'Cidade':
-        return cidade;
-      case 'CEP':
-        return cep;
-      case 'Telefone':
-        return telefone;
-      case 'Cargo':
-        return cargo.toString();
-      case 'Turno':
-        return turno?.join(', ') ?? '';
-      default:
-        return '';
-    }
+  String toString() {
+    return nome;
   }
 }

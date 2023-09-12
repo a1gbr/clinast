@@ -1,9 +1,8 @@
-import '../utils/item_tabela.dart';
 import 'medico.dart';
 import 'paciente.dart';
-import 'shared/estado.dart';
+import 'shared/status.dart';
 
-class Procedimento implements ItemTabela {
+class Procedimento {
   static int _idCounter = 0;
   final int id;
 
@@ -26,9 +25,4 @@ class Procedimento implements ItemTabela {
     this.tipoConvenio,
     this.retorno = false,
   }) : id = ++_idCounter;
-
-  @override
-  String pegarValor(String coluna) {
-    return '';
-  }
 }

@@ -2,10 +2,9 @@ import 'dart:convert';
 
 import 'package:crypto/crypto.dart';
 
-import '../utils/item_tabela.dart';
 import 'shared/validacao_cpf.dart';
 
-class Pessoa implements ItemTabela {
+class Pessoa {
   static int _idCounter = 0;
   final int id;
 
@@ -16,7 +15,7 @@ class Pessoa implements ItemTabela {
   String cidade;
   String cep;
   String telefone;
-  final String cpf;
+  String cpf;
   late final String hashedCPF;
 
   Pessoa({
@@ -28,14 +27,14 @@ class Pessoa implements ItemTabela {
     required this.cep,
     required this.telefone,
     required this.cpf,
-  })  : id = ++_idCounter,
-        hashedCPF = _hashCPF(cpf) {
+  }) : id = ++_idCounter {
     if (!isValidCPF(cpf)) {
       throw ArgumentError('CPF Inválido');
     }
+    hashedCPF = _hashCPF(cpf);
   }
 
-  static _hashCPF(String cpf) {
+  static String _hashCPF(String cpf) {
     final bytes = utf8.encode(cpf);
     final hashed = sha256.convert(bytes);
     return hashed.toString();
@@ -43,10 +42,5 @@ class Pessoa implements ItemTabela {
 
   bool verificaCPF(String digitosCPF) {
     return hashedCPF == _hashCPF(digitosCPF);
-  }
-
-  @override
-  String pegarValor(coluna) {
-    return '';
   }
 }

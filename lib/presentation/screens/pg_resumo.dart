@@ -9,13 +9,9 @@ class ResumoPage extends StatefulWidget {
   State<ResumoPage> createState() => _ResumoPageState();
 }
 
-void handleExportarClick() {
-  // Handle Exportar button click here
-}
+void handleExportarClick() {}
 
-void handleNovoItemClick() {
-  // Handle Novo Item button click here
-}
+void handleNovoItemClick() {}
 
 class _ResumoPageState extends State<ResumoPage> {
   @override

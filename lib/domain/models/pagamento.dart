@@ -1,18 +1,19 @@
-import '../utils/item_tabela.dart'; // Import the ItemTabela interface
+// Import the ItemTabela interface
 import 'consulta.dart';
 import 'exame.dart';
-import 'shared/estado.dart';
+import 'shared/forma_pagamento.dart';
+import 'shared/status.dart';
 
-class Pagamento implements ItemTabela {
+class Pagamento {
   static int _idCounter = 0;
   final int id;
 
   Exame? exame;
   Consulta? consulta;
   StatusPagamento status;
-  final String formaPagamento;
+  final FormaPagamento formaPagamento;
   final String codPagamento;
-  late final double? valor;
+  final double? valor;
 
   Pagamento({
     this.exame,
@@ -20,28 +21,7 @@ class Pagamento implements ItemTabela {
     required this.status,
     required this.formaPagamento,
     required this.codPagamento,
+    double? valor,
   })  : id = ++_idCounter,
-        valor = exame != null ? exame.valor : consulta?.valor;
-
-  @override
-  String pegarValor(String coluna) {
-    switch (coluna) {
-      case 'ID':
-        return id.toString();
-      case 'Exame':
-        return exame?.id.toString() ?? '';
-      case 'Consulta':
-        return consulta?.id.toString() ?? '';
-      case 'Status':
-        return status.toString();
-      case 'Forma de Pag.':
-        return formaPagamento;
-      case 'Código de Pag.':
-        return codPagamento;
-      case 'Valor':
-        return valor?.toString() ?? '';
-      default:
-        return '';
-    }
-  }
+        valor = valor ?? (exame != null ? exame.valor : consulta?.valor);
 }
