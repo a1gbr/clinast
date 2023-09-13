@@ -14,7 +14,7 @@ class Consulta extends Procedimento {
     required DateTime dataAtendimento,
     required DateTime horaAtendimento,
     required StatusProcedimento statusProcedimento,
-    bool convenio = false,
+    bool haConvenio = false,
     String? tipoConvenio,
     bool retorno = false,
   }) : super(
@@ -23,7 +23,7 @@ class Consulta extends Procedimento {
           dataAtendimento: dataAtendimento,
           horaAtendimento: horaAtendimento,
           statusProcedimento: statusProcedimento,
-          convenio: convenio,
+          haConvenio: haConvenio,
           tipoConvenio: tipoConvenio,
           retorno: retorno,
         ) {

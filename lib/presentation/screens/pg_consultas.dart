@@ -5,7 +5,6 @@ import '../widgets/titulo_pagina.dart';
 
 // CRIA A LISTA DE TITULOS DAS COLUNAS
 final List<String> tituloColunas = [
-  'ID',
   'PACIENTE',
   'MÉDICO',
   'TIPO',
@@ -57,10 +56,6 @@ class _ConsultasPageState extends State<ConsultasPage> {
               child: TabelaDinamica(
                 colunas: tituloColunas,
                 itens: const [],
-                naSelecao: (selecionados) {
-                  // LOG PRO DEBUG
-                  print(selecionados);
-                },
               ),
             ),
           ),

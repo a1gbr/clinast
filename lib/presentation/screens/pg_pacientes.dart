@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import '../../domain/models/paciente.dart';
 import '../widgets/tabela.dart';
 import '../widgets/titulo_pagina.dart';
+import '../widgets/toolbar.dart';
 
 // CRIA A LISTA DE TITULOS DAS COLUNAS
 final List<String> tituloColunas = [
-  'ID',
   'NOME',
   'DATA NASC',
   'CIDADE',
@@ -36,6 +36,66 @@ void handleExportarClick() {}
 void handleNovoItemClick() {}
 
 class _PacientesPageState extends State<PacientesPage> {
+  List<Map<String, dynamic>> linhasMostraveis = [];
+
+  void handleSearch(String query) {
+    setState(() {
+      linhasMostraveis = widget.itens.map((paciente) {
+        final row = {
+          'NOME': paciente.nome,
+          'DATA NASC': paciente.data,
+          'CIDADE': paciente.cidade,
+          'CEP': paciente.cep,
+          'TELEFONE': paciente.telefone,
+          'ALTURA': paciente.altura,
+          'PESO': paciente.peso,
+          'MEDICAMENTOS': paciente.medicamentos,
+        };
+        return row;
+      }).where((row) {
+        final searchText = query.toLowerCase();
+        return row.values.any(
+            (value) => value.toString().toLowerCase().contains(searchText));
+      }).toList();
+    });
+  }
+
+  void handleClearSearch() {
+    setState(() {
+      linhasMostraveis = widget.itens.map((paciente) {
+        final row = {
+          'NOME': paciente.nome,
+          'DATA NASC': paciente.data,
+          'CIDADE': paciente.cidade,
+          'CEP': paciente.cep,
+          'TELEFONE': paciente.telefone,
+          'ALTURA': paciente.altura,
+          'PESO': paciente.peso,
+          'MEDICAMENTOS': paciente.medicamentos,
+        };
+        return row;
+      }).toList();
+    });
+  }
+
+  @override
+  void initState() {
+    linhasMostraveis = widget.itens.map((paciente) {
+      final row = {
+        'NOME': paciente.nome,
+        'DATA NASC': paciente.data,
+        'CIDADE': paciente.cidade,
+        'CEP': paciente.cep,
+        'TELEFONE': paciente.telefone,
+        'ALTURA': paciente.altura,
+        'PESO': paciente.peso,
+        'MEDICAMENTOS': paciente.medicamentos,
+      };
+      return row;
+    }).toList();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     // GERANDO BACK FALSO
@@ -54,6 +114,11 @@ class _PacientesPageState extends State<PacientesPage> {
           // ESPACAMENTO DO TITULO PRO CORPO
           const SizedBox(height: 16),
 
+          // T00LBAR DE PESQUISA
+          Toolbar(
+            onSearch: handleSearch,
+            onClearSearch: handleClearSearch,
+          ),
           // CORPO DA PAGINA
           Expanded(
             child: Center(
@@ -62,9 +127,8 @@ class _PacientesPageState extends State<PacientesPage> {
                 colunas: tituloColunas,
                 itens: widget.itens.map((paciente) {
                   return {
-                    'ID': paciente.id.toString(),
                     'NOME': paciente.nome,
-                    'DATA NASC': paciente.dataNascimento,
+                    'DATA NASC': paciente.data,
                     'CIDADE': paciente.cidade,
                     'CEP': paciente.cep,
                     'TELEFONE': paciente.telefone,
@@ -73,10 +137,6 @@ class _PacientesPageState extends State<PacientesPage> {
                     'MEDICAMENTOS': paciente.medicamentos,
                   };
                 }).toList(),
-                naSelecao: (selecionados) {
-                  // LOG PRO DEBUG
-                  print(selecionados);
-                },
               ),
             ),
           ),

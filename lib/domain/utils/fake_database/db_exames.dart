@@ -9,6 +9,8 @@ import 'db_pacientes.dart';
 final List<Exame> exames = [];
 
 void geradorExames() {
+  final random = Random();
+
   for (int i = 0; i < 31; i++) {
     final exame = Exame(
       medico: medicos[i],
@@ -18,11 +20,12 @@ void geradorExames() {
       statusProcedimento: StatusProcedimento(
         statusProcedimento: StatusProcedimentoEnum.agendado,
       ),
-      solicitante: medicos[Random().nextInt(medicos.length)],
+      solicitante: medicos[random.nextInt(medicos.length)],
       tipoExame: TipoExame(
         tipoExame: TipoExameEnum.values[i % TipoExameEnum.values.length],
       ),
     );
+
     exames.add(exame);
   }
 }

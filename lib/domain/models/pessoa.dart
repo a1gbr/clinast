@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:crypto/crypto.dart';
+import 'package:intl/intl.dart';
 
 import 'shared/validacao_cpf.dart';
 
@@ -43,4 +44,6 @@ class Pessoa {
   bool verificaCPF(String digitosCPF) {
     return hashedCPF == _hashCPF(digitosCPF);
   }
+
+  String get data => DateFormat('dd/MM/yyyy').format(dataNascimento);
 }

@@ -11,18 +11,17 @@ final List<Paciente> pacientes = [];
 void geradorPacientes() {
   final faker = Faker();
   final cpfUtil = CPFUtil();
-  final Random random = Random();
 
   for (int i = 0; i < 31; i++) {
     final cpf = cpfUtil.generate();
-    final int numberOfMedicamentos = random.nextInt(4) + 1;
+    final int numberOfMedicamentos = Random().nextInt(4) + 1;
     final List<Medicamento> medicamentos = [];
 
     for (int j = 0; j < numberOfMedicamentos; j++) {
       medicamentos.add(
         Medicamento(
           medicamento: MedicamentosEnum
-              .values[random.nextInt(MedicamentosEnum.values.length)],
+              .values[Random().nextInt(MedicamentosEnum.values.length)],
         ),
       );
     }

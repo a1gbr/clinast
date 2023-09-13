@@ -17,7 +17,7 @@ class Exame extends Procedimento {
     required StatusProcedimento statusProcedimento,
     required this.solicitante,
     required this.tipoExame,
-    bool convenio = false,
+    bool haConvenio = false,
     String? tipoConvenio,
     bool? retorno,
   })  : valor = tipoExame.valor,
@@ -27,7 +27,7 @@ class Exame extends Procedimento {
           dataAtendimento: dataAtendimento,
           horaAtendimento: horaAtendimento,
           statusProcedimento: statusProcedimento,
-          convenio: convenio,
+          haConvenio: haConvenio,
           tipoConvenio: tipoConvenio,
           retorno: retorno,
         );
