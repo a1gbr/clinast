@@ -1,4 +1,4 @@
-import 'package:clinast/presentation/screens/pg_login.dart';
+import 'package:clinast/presentation/screens/pg_resumo.dart';
 import 'package:flutter/material.dart';
 
 import 'domain/utils/fake_database/db_exames.dart';
@@ -63,7 +63,7 @@ class _MyHomePageState extends State<MyHomePage> {
     // PAGINA ATUAL
     switch (_selectedIndex) {
       case 0:
-        page = const LoginPage();
+        page = const ResumoPage();
         break;
       case 1:
         page = ExamesPage(

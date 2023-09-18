@@ -15,7 +15,11 @@ class _LoginPageState extends State<LoginPage> {
         child: Center(
           child: LayoutBuilder(
             builder: (context, constraints) {
-              double containerWidth = constraints.maxWidth > 940 ? 0.35 : 0.7;
+              double containerWidth = constraints.maxWidth > 1200
+                  ? 0.3
+                  : 900 < constraints.maxWidth
+                      ? 0.45
+                      : 0.6;
 
               return SizedBox(
                 width: constraints.maxWidth * containerWidth,
@@ -24,19 +28,20 @@ class _LoginPageState extends State<LoginPage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       const Text(
-                        'Bem vindo!',
+                        'Seja bem vindo!',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 24,
                         ),
                       ),
                       const Text(
-                        'Faça seu login:',
+                        'Por favor, faça seu login:',
                         style: TextStyle(
-                          fontSize: 20,
+                          fontSize: 18,
                         ),
                       ),
-                      const SizedBox(height: 24),
+
+                      const SizedBox(height: 30),
 
                       // email
                       Container(
@@ -73,6 +78,38 @@ class _LoginPageState extends State<LoginPage> {
                             hintText: 'Senha',
                           ),
                         ),
+                      ),
+
+                      const SizedBox(height: 30),
+
+                      Container(
+                        height: 42,
+                        margin: const EdgeInsets.symmetric(horizontal: 25),
+                        width: 250,
+                        child: ElevatedButton(
+                          onPressed: () {},
+                          child: const Text('Entrar'),
+                        ),
+                      ),
+
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Container(
+                            margin: const EdgeInsets.symmetric(vertical: 16),
+                            child: TextButton(
+                              onPressed: () {},
+                              child: const Text('Criar conta'),
+                            ),
+                          ),
+                          Container(
+                            margin: const EdgeInsets.symmetric(vertical: 16),
+                            child: TextButton(
+                              onPressed: () {},
+                              child: const Text('Esqueci minha senha'),
+                            ),
+                          ),
+                        ],
                       ),
                     ],
                   ),
