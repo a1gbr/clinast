@@ -1,16 +1,20 @@
 import 'package:flutter/material.dart';
 
-import 'pages/pg_consultas.dart';
-import 'pages/pg_exames.dart';
-import 'pages/pg_funcionarios.dart';
-import 'pages/pg_medicos.dart';
-import 'pages/pg_pacientes.dart';
-import 'pages/pg_pagamentos.dart';
-import 'pages/pg_resumo.dart';
-import 'widgets/botao_navegacao.dart';
-import 'widgets/style/cores.dart';
+import 'domain/utils/fake_database/db_exames.dart';
+import 'domain/utils/fake_database/db_medicos.dart';
+import 'domain/utils/fake_database/db_pacientes.dart';
+import 'domain/utils/fake_database/gerador.dart';
+import 'presentation/screens/pg_consultas.dart';
+import 'presentation/screens/pg_exames.dart';
+import 'presentation/screens/pg_funcionarios.dart';
+import 'presentation/screens/pg_medicos.dart';
+import 'presentation/screens/pg_pacientes.dart';
+import 'presentation/screens/pg_pagamentos.dart';
+import 'presentation/screens/pg_resumo.dart';
+import 'presentation/widgets/botao_navegacao.dart';
+import 'presentation/widgets/shared/cores.dart';
 
-void main() {
+void main() async {
   runApp(const MyApp());
 }
 
@@ -19,13 +23,22 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Clinic Management Assistant',
-      theme: ThemeData(
-        useMaterial3: true,
-        colorScheme: ColorScheme.fromSeed(seedColor: acentuada),
-      ),
-      home: const MyHomePage(),
+    return FutureBuilder(
+      future: gerador(),
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.done) {
+          return MaterialApp(
+            title: 'Clinic Management Assistant',
+            theme: ThemeData(
+              useMaterial3: true,
+              colorScheme: ColorScheme.fromSeed(seedColor: acentuada),
+            ),
+            home: const MyHomePage(),
+          );
+        } else {
+          return const CircularProgressIndicator();
+        }
+      },
     );
   }
 }
@@ -40,8 +53,10 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   // INDEX DA NAVEGACAO
   var _selectedIndex = 0;
+
   // ESTADO DA NAVEGACAO
   bool _isExpanded = false;
+
   @override
   Widget build(BuildContext context) {
     Widget page;
@@ -51,9 +66,9 @@ class _MyHomePageState extends State<MyHomePage> {
         page = const ResumoPage();
         break;
       case 1:
-        page = const ExamesPage(
-          colunas: [],
-          itens: [],
+        page = ExamesPage(
+          colunas: const [],
+          itens: exames,
         );
         break;
       case 2:
@@ -63,15 +78,15 @@ class _MyHomePageState extends State<MyHomePage> {
         );
         break;
       case 3:
-        page = const PacientesPage(
-          colunas: [],
-          itens: [],
+        page = PacientesPage(
+          colunas: const [],
+          itens: pacientes,
         );
         break;
       case 4:
-        page = const MedicosPage(
-          colunas: [],
-          itens: [],
+        page = MedicosPage(
+          colunas: const [],
+          itens: medicos,
         );
         break;
       case 5:
@@ -137,8 +152,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
               // CONSULTAS
               NavigationRailDestination(
-                icon: Icon(Icons.monitor_heart_outlined),
-                selectedIcon: Icon(Icons.monitor_heart),
+                icon: Icon(Icons.assignment_outlined),
+                selectedIcon: Icon(Icons.assignment),
                 label: Text('C O N S U L T A S'),
 
                 // ESPACAMENTO PARA PROXIMA CATEGORIA

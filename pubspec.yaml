@@ -7,14 +7,18 @@ environment:
   sdk: '>=3.0.6 <4.0.0'
 
 dependencies:
+  crypto: ^3.0.3
   flutter:
     sdk: flutter
-  intl: ^0.17.0
+  intl: ^0.18.1
+  
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^2.0.0
+  cpf_util: ^3.0.0
+  faker: ^2.1.0
   
 
 flutter:
