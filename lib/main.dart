@@ -1,3 +1,4 @@
+import 'package:clinast/presentation/screens/pg_login.dart';
 import 'package:flutter/material.dart';
 
 import 'domain/utils/fake_database/db_exames.dart';
@@ -10,7 +11,6 @@ import 'presentation/screens/pg_funcionarios.dart';
 import 'presentation/screens/pg_medicos.dart';
 import 'presentation/screens/pg_pacientes.dart';
 import 'presentation/screens/pg_pagamentos.dart';
-import 'presentation/screens/pg_resumo.dart';
 import 'presentation/widgets/botao_navegacao.dart';
 import 'presentation/widgets/shared/cores.dart';
 
@@ -63,7 +63,7 @@ class _MyHomePageState extends State<MyHomePage> {
     // PAGINA ATUAL
     switch (_selectedIndex) {
       case 0:
-        page = const ResumoPage();
+        page = const LoginPage();
         break;
       case 1:
         page = ExamesPage(

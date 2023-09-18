@@ -4,7 +4,7 @@ const verde = Colors.green;
 const amarelo = Colors.yellow;
 const vermelho = Colors.red;
 
-const fundo = Color(0xff141414);
+const fundo = Colors.black;
 const cinza = Colors.grey;
 const branco = Colors.white;
 

@@ -125,18 +125,7 @@ class _PacientesPageState extends State<PacientesPage> {
               // CHAMANDO O WIDGET TABELA
               child: TabelaDinamica(
                 colunas: tituloColunas,
-                itens: widget.itens.map((paciente) {
-                  return {
-                    'NOME': paciente.nome,
-                    'DATA NASC': paciente.data,
-                    'CIDADE': paciente.cidade,
-                    'CEP': paciente.cep,
-                    'TELEFONE': paciente.telefone,
-                    'ALTURA': paciente.altura,
-                    'PESO': paciente.peso,
-                    'MEDICAMENTOS': paciente.medicamentos,
-                  };
-                }).toList(),
+                itens: linhasMostraveis,
               ),
             ),
           ),
