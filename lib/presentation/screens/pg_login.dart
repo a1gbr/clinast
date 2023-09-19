@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+  final VoidCallback onLogin; // Callback to handle login
+
+  const LoginPage({Key? key, required this.onLogin}) : super(key: key);
 
   @override
   State<LoginPage> createState() => _LoginPageState();
@@ -87,7 +89,10 @@ class _LoginPageState extends State<LoginPage> {
                         margin: const EdgeInsets.symmetric(horizontal: 25),
                         width: 250,
                         child: ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            // Call the login callback
+                            widget.onLogin();
+                          },
                           child: const Text('Entrar'),
                         ),
                       ),

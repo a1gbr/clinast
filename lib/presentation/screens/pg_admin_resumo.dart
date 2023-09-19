@@ -2,18 +2,18 @@ import 'package:flutter/material.dart';
 
 import '../widgets/titulo_pagina.dart';
 
-class ResumoPage extends StatefulWidget {
-  const ResumoPage({super.key});
+class AdminResumoPage extends StatefulWidget {
+  const AdminResumoPage({super.key});
 
   @override
-  State<ResumoPage> createState() => _ResumoPageState();
+  State<AdminResumoPage> createState() => _AdminResumoPageState();
 }
 
 void handleExportarClick() {}
 
 void handleNovoItemClick() {}
 
-class _ResumoPageState extends State<ResumoPage> {
+class _AdminResumoPageState extends State<AdminResumoPage> {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
@@ -32,7 +32,7 @@ class _ResumoPageState extends State<ResumoPage> {
 
           // CORPO DA PAGINA
           Expanded(
-            child: Text('RESUMO PADRAO'),
+            child: Text('ADMIN DASHBOARD'),
           ),
         ],
       ),
