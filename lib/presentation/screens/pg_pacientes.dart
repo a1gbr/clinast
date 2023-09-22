@@ -4,6 +4,7 @@ import '../../domain/models/paciente.dart';
 import '../widgets/tabela.dart';
 import '../widgets/titulo_pagina.dart';
 import '../widgets/toolbar.dart';
+import 'md_cadastro.dart';
 
 // CRIA A LISTA DE TITULOS DAS COLUNAS
 final List<String> tituloColunas = [
@@ -33,7 +34,14 @@ class PacientesPage extends StatefulWidget {
 
 void handleExportarClick() {}
 
-void handleNovoItemClick() {}
+// HANDLER PRA CHAMAR O MODAL DE CADASTRO
+void handleNovoItemClick(BuildContext context) {
+  Navigator.of(context).push(
+    MaterialPageRoute(
+      builder: (context) => const ModalCadastro(),
+    ),
+  );
+}
 
 class _PacientesPageState extends State<PacientesPage> {
   List<Map<String, dynamic>> linhasMostraveis = [];
@@ -104,11 +112,12 @@ class _PacientesPageState extends State<PacientesPage> {
       body: Column(
         children: <Widget>[
           // TITUTLO DA PAGINA
-          const TituloPagina(
+          TituloPagina(
             "PACIENTES",
             "Lista de pacientes:",
             onExportar: handleExportarClick,
-            onNovoItem: handleNovoItemClick,
+            // CHAMANDO FUNCAO Q EXIBE O MODAL DE CADASTRO
+            onNovoItem: () => handleNovoItemClick(context),
           ),
 
           // ESPACAMENTO DO TITULO PRO CORPO
