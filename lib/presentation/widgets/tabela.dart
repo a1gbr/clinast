@@ -39,7 +39,7 @@ class _TabelaDinamicaState extends State<TabelaDinamica> {
                 ),
               ),
             ],
-            rows: widget.itens.map(
+            rows: widget.itens.reversed.map(
               (linha) {
                 return DataRow(
                   cells: [

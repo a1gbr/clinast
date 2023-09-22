@@ -1,3 +1,6 @@
+import 'package:clinast/presentation/screens/pg_admin_resumo.dart';
+import 'package:clinast/presentation/screens/pg_login.dart';
+import 'package:clinast/presentation/screens/pg_resumo.dart';
 import 'package:flutter/material.dart';
 
 import 'domain/utils/fake_database/db_exames.dart';
@@ -10,7 +13,6 @@ import 'presentation/screens/pg_funcionarios.dart';
 import 'presentation/screens/pg_medicos.dart';
 import 'presentation/screens/pg_pacientes.dart';
 import 'presentation/screens/pg_pagamentos.dart';
-import 'presentation/screens/pg_resumo.dart';
 import 'presentation/widgets/botao_navegacao.dart';
 import 'presentation/widgets/shared/cores.dart';
 
@@ -19,7 +21,7 @@ void main() async {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +35,7 @@ class MyApp extends StatelessWidget {
               useMaterial3: true,
               colorScheme: ColorScheme.fromSeed(seedColor: acentuada),
             ),
-            home: const MyHomePage(),
+            home: const AuthenticationWrapper(),
           );
         } else {
           return const CircularProgressIndicator();
@@ -43,8 +45,43 @@ class MyApp extends StatelessWidget {
   }
 }
 
+class AuthenticationWrapper extends StatefulWidget {
+  const AuthenticationWrapper({Key? key}) : super(key: key);
+
+  @override
+  State<AuthenticationWrapper> createState() => _AuthenticationWrapperState();
+}
+
+class _AuthenticationWrapperState extends State<AuthenticationWrapper> {
+  bool isAuthenticated = false;
+  bool isAdmin = false;
+
+  void authenticateUser() {
+    /**
+     * LOGICA DE AUTENTICACAO
+     */
+    setState(
+      () {
+        isAuthenticated = true;
+        isAdmin = false;
+      },
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    /**
+     * SE O USUARIO ESTIVER AUTENTICADO, RETORNA A PAGINA PRINCIPAL
+     */
+    return isAuthenticated
+        ? MyHomePage(isAdmin: isAdmin)
+        : LoginPage(onLogin: authenticateUser);
+  }
+}
+
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key});
+  final bool isAdmin;
+  const MyHomePage({Key? key, required this.isAdmin}) : super(key: key);
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -63,7 +100,9 @@ class _MyHomePageState extends State<MyHomePage> {
     // PAGINA ATUAL
     switch (_selectedIndex) {
       case 0:
-        page = const ResumoPage();
+        (widget.isAdmin)
+            ? page = const AdminResumoPage()
+            : page = const ResumoPage();
         break;
       case 1:
         page = ExamesPage(
