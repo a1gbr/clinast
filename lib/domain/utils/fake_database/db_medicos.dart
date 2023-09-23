@@ -1,6 +1,8 @@
 import 'dart:math';
 
+// ignore: depend_on_referenced_packages
 import 'package:cpf_util/cpf_util.dart';
+// ignore: depend_on_referenced_packages
 import 'package:faker/faker.dart';
 
 import '../../models/medico.dart';

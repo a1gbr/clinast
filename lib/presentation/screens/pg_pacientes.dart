@@ -4,7 +4,7 @@ import '../../domain/models/paciente.dart';
 import '../widgets/tabela.dart';
 import '../widgets/titulo_pagina.dart';
 import '../widgets/toolbar.dart';
-import 'md_cadastro.dart';
+import 'modal/paciente.dart';
 
 // CRIA A LISTA DE TITULOS DAS COLUNAS
 final List<String> tituloColunas = [
@@ -36,10 +36,11 @@ void handleExportarClick() {}
 
 // HANDLER PRA CHAMAR O MODAL DE CADASTRO
 void handleNovoItemClick(BuildContext context) {
-  Navigator.of(context).push(
-    MaterialPageRoute(
-      builder: (context) => const ModalCadastro(),
-    ),
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return const PatientAddModal();
+    },
   );
 }
 
