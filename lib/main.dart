@@ -1,18 +1,18 @@
-import 'package:clinast/presentation/screens/pg_admin_resumo.dart';
-import 'package:clinast/presentation/screens/pg_login.dart';
-import 'package:clinast/presentation/screens/pg_resumo.dart';
 import 'package:flutter/material.dart';
 
 import 'domain/utils/fake_database/db_exames.dart';
 import 'domain/utils/fake_database/db_medicos.dart';
 import 'domain/utils/fake_database/db_pacientes.dart';
 import 'domain/utils/fake_database/gerador.dart';
+import 'presentation/screens/pg_admin_resumo.dart';
 import 'presentation/screens/pg_consultas.dart';
 import 'presentation/screens/pg_exames.dart';
 import 'presentation/screens/pg_funcionarios.dart';
+import 'presentation/screens/pg_login.dart';
 import 'presentation/screens/pg_medicos.dart';
 import 'presentation/screens/pg_pacientes.dart';
 import 'presentation/screens/pg_pagamentos.dart';
+import 'presentation/screens/pg_resumo.dart';
 import 'presentation/widgets/botao_navegacao.dart';
 import 'presentation/widgets/shared/cores.dart';
 
@@ -73,9 +73,7 @@ class _AuthenticationWrapperState extends State<AuthenticationWrapper> {
     /**
      * SE O USUARIO ESTIVER AUTENTICADO, RETORNA A PAGINA PRINCIPAL
      */
-    return isAuthenticated
-        ? MyHomePage(isAdmin: isAdmin)
-        : LoginPage(onLogin: authenticateUser);
+    return isAuthenticated ? MyHomePage(isAdmin: isAdmin) : LoginPage(onLogin: authenticateUser);
   }
 }
 
@@ -100,9 +98,7 @@ class _MyHomePageState extends State<MyHomePage> {
     // PAGINA ATUAL
     switch (_selectedIndex) {
       case 0:
-        (widget.isAdmin)
-            ? page = const AdminResumoPage()
-            : page = const ResumoPage();
+        (widget.isAdmin) ? page = const AdminResumoPage() : page = const ResumoPage();
         break;
       case 1:
         page = ExamesPage(

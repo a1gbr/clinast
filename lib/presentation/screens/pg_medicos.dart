@@ -1,3 +1,4 @@
+import 'package:clinast/presentation/screens/modal/medico.dart';
 import 'package:flutter/material.dart';
 
 import '../../domain/models/medico.dart';
@@ -5,7 +6,6 @@ import '../widgets/tabela.dart';
 import '../widgets/titulo_pagina.dart';
 import '../widgets/toolbar.dart';
 
-// CRIA A LISTA DE TITULOS DAS COLUNAS
 final List<String> tituloColunas = [
   'NOME',
   'DATA NASC',
@@ -31,57 +31,36 @@ class MedicosPage extends StatefulWidget {
   State<MedicosPage> createState() => _MedicosPageState();
 }
 
-void handleExportarClick() {}
-
-void handleNovoItemClick() {}
-
 class _MedicosPageState extends State<MedicosPage> {
   List<Map<String, dynamic>> linhasMostraveis = [];
 
-  void handleSearch(String query) {
+  void handleExportarClick() {}
+
+  void handleNovoItemClick(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return const MedicoModal();
+      },
+    );
+  }
+
+  void handleSearch(String bsuca) {
     setState(() {
-      linhasMostraveis = widget.itens.map((medico) {
-        final row = {
-          'NOME': medico.nome,
-          'DATA NASC': medico.data,
-          'CIDADE': medico.cidade,
-          'CEP': medico.cep,
-          'TELEFONE': medico.telefone,
-          'TURNO': medico.turno,
-          'CRM': medico.crm,
-          'ESPECIALIDADE': medico.especialidade,
-        };
-        return row;
-      }).where((row) {
-        final searchText = query.toLowerCase();
-        return row.values.any(
-            (value) => value.toString().toLowerCase().contains(searchText));
-      }).toList();
+      linhasMostraveis = filtroMedico(bsuca);
     });
   }
 
   void handleClearSearch() {
     setState(() {
-      linhasMostraveis = widget.itens.map((medico) {
-        final row = {
-          'NOME': medico.nome,
-          'DATA NASC': medico.data,
-          'CIDADE': medico.cidade,
-          'CEP': medico.cep,
-          'TELEFONE': medico.telefone,
-          'TURNO': medico.turno,
-          'CRM': medico.crm,
-          'ESPECIALIDADE': medico.especialidade,
-        };
-        return row;
-      }).toList();
+      linhasMostraveis = filtroMedico('');
     });
   }
 
-  @override
-  void initState() {
-    linhasMostraveis = widget.itens.map((medico) {
-      final row = {
+  List<Map<String, dynamic>> filtroMedico(String busca) {
+    final textoPesquisa = busca.toLowerCase();
+    return widget.itens.map((medico) {
+      final linha = {
         'NOME': medico.nome,
         'DATA NASC': medico.data,
         'CIDADE': medico.cidade,
@@ -91,8 +70,15 @@ class _MedicosPageState extends State<MedicosPage> {
         'CRM': medico.crm,
         'ESPECIALIDADE': medico.especialidade,
       };
-      return row;
+      return linha;
+    }).where((linha) {
+      return linha.values.any((valor) => valor.toString().toLowerCase().contains(textoPesquisa));
     }).toList();
+  }
+
+  @override
+  void initState() {
+    linhasMostraveis = filtroMedico('');
     super.initState();
   }
 
@@ -101,27 +87,19 @@ class _MedicosPageState extends State<MedicosPage> {
     return Scaffold(
       body: Column(
         children: <Widget>[
-          // TITULO DA PAGINA
-          const TituloPagina(
+          TituloPagina(
             "MÉDICOS",
             "Lista de Doutores:",
             onExportar: handleExportarClick,
-            onNovoItem: handleNovoItemClick,
+            onNovoItem: () => handleNovoItemClick(context),
           ),
-
-          // ESCAPAMENTO DO TITULO PRO CORPO
           const SizedBox(height: 16),
-
-          // T00LBAR DE PESQUISA
           Toolbar(
             onSearch: handleSearch,
             onClearSearch: handleClearSearch,
           ),
-
-          // CORPO DA PAGINA
           Expanded(
             child: Center(
-              // CHAMANDO O WIDGET TABELA
               child: TabelaDinamica(
                 colunas: tituloColunas,
                 itens: linhasMostraveis,

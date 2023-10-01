@@ -1,3 +1,4 @@
+import 'package:clinast/presentation/screens/modal/consulta.dart';
 import 'package:flutter/material.dart';
 
 import '../widgets/tabela.dart';
@@ -30,7 +31,14 @@ class ConsultasPage extends StatefulWidget {
 
 void handleExportarClick() {}
 
-void handleNovoItemClick() {}
+void handleNovoItemClick(BuildContext context) {
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return const ConsultaModal();
+    },
+  );
+}
 
 class _ConsultasPageState extends State<ConsultasPage> {
   @override
@@ -39,11 +47,11 @@ class _ConsultasPageState extends State<ConsultasPage> {
       body: Column(
         children: <Widget>[
           // TITULO DA PAGINA
-          const TituloPagina(
+          TituloPagina(
             "CONSULTAS",
             "Lista de consultas:",
             onExportar: handleExportarClick,
-            onNovoItem: handleNovoItemClick,
+            onNovoItem: () => handleNovoItemClick(context),
           ),
 
           // ESPACAMENTO DO TITULO PRO CORPO

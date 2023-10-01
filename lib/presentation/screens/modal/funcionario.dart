@@ -1,79 +1,45 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart'; // Import for date formatting
 
-import '../../../domain/models/paciente.dart';
-import '../../../domain/utils/fake_database/db_pacientes.dart';
 import '../../../presentation/screens/modal/shared/style.dart';
 import '../../../presentation/widgets/shared/cores.dart';
 
-class PacienteModal extends StatefulWidget {
-  //final Paciente? paciente;
-
-  const PacienteModal({
+class FuncionarioModal extends StatefulWidget {
+  const FuncionarioModal({
     Key? key,
-    /*this.paciente*/
   }) : super(key: key);
 
   @override
-  PacienteModalState createState() => PacienteModalState();
+  FuncionarioModalState createState() => FuncionarioModalState();
 }
 
-class PacienteModalState extends State<PacienteModal> {
+class FuncionarioModalState extends State<FuncionarioModal> {
   ///  CONTROLADORES
   // CHAVE GLOBAL DO FORMULARIO
   final _formKey = GlobalKey<FormState>();
   // CONTROLADORES DO FORMULARIO
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _addressController = TextEditingController();
-  final TextEditingController _alturaController = TextEditingController();
-  final TextEditingController _pesoController = TextEditingController();
   final TextEditingController _cpfController = TextEditingController();
   final TextEditingController _bairroController = TextEditingController();
   final TextEditingController _cidadeController = TextEditingController();
   final TextEditingController _cepController = TextEditingController();
   final TextEditingController _telefoneController = TextEditingController();
-  final TextEditingController _medicamentosController = TextEditingController();
-  final TextEditingController _imcController = TextEditingController();
   final TextEditingController _addressNumberController = TextEditingController();
+  final TextEditingController _cargoController = TextEditingController();
+  final TextEditingController _turnoController = TextEditingController();
   // DATA
   DateTime? _dataSelecionada;
 
   ///  FUNCOES
-  // FUNCAO PARA CALCULAR O IMC
-  void _calcularIMC(String valor) {
-    double altura = double.tryParse(_alturaController.text) ?? 0.0;
-    double peso = double.tryParse(_pesoController.text) ?? 0.0;
+  // SALVAR O FUNCIONARIO
+  void _salvarFuncionario() {
+    // CRIAR O NOVO PACIENTE
 
-    if (altura > 0 && peso > 0) {
-      double imc = peso / (altura * altura);
-      _imcController.text = imc.toStringAsFixed(2);
-    } else {
-      _imcController.text = '';
-    }
-  }
-
-  // SALVAR O PACIENTE
-  void _salvarPaciente() {
-    // CRIA O NOVO PACIENTE
-    final novoPaciente = Paciente(
-      nome: _nameController.text,
-      dataNascimento: _dataSelecionada ?? DateTime.now(),
-      endereco: _addressController.text,
-      bairro: _bairroController.text,
-      cidade: _cidadeController.text,
-      cep: _cepController.text,
-      telefone: _telefoneController.text,
-      cpf: _cpfController.text,
-      altura: double.tryParse(_alturaController.text),
-      peso: double.tryParse(_pesoController.text),
-      imc: double.tryParse(_imcController.text),
-    );
-
-    pacientes.add(novoPaciente);
     Navigator.of(context).pop();
   }
 
-  // FUNCAO PARA SELECIONAR A DATA
+  // SELECIONAR A DATA
   Future<void> _selecionarData(BuildContext context) async {
     final DateTime? selecionada = await showDatePicker(
       context: context,
@@ -89,21 +55,20 @@ class PacienteModalState extends State<PacienteModal> {
     }
   }
 
-  ///  LIFECYCLE
   @override
   void dispose() {
+    // LIMPAR OS CONTROLADORES
     _nameController.dispose();
     _addressController.dispose();
-    _alturaController.dispose();
-    _pesoController.dispose();
     _cpfController.dispose();
     _bairroController.dispose();
     _cidadeController.dispose();
     _cepController.dispose();
     _telefoneController.dispose();
-    _medicamentosController.dispose();
-    _imcController.dispose();
     _addressNumberController.dispose();
+    _cargoController.dispose();
+    _turnoController.dispose();
+
     super.dispose();
   }
 
@@ -120,14 +85,14 @@ class PacienteModalState extends State<PacienteModal> {
 
       // TITULO DO MODAL
       title: const Text(
-        'CADASTRO DE PACIENTE',
+        'CADASTRO DE FUNCIONÁRIO',
         textAlign: TextAlign.center,
       ),
 
       // CONTEUDO DO MODAL
       content: SizedBox(
         width: MediaQuery.of(context).size.width * 0.4,
-        height: MediaQuery.of(context).size.height * 0.6,
+        height: MediaQuery.of(context).size.height * 0.5,
 
         // FORMULARIO DO MODAL
         child: Center(
@@ -265,7 +230,7 @@ class PacienteModalState extends State<PacienteModal> {
                           decoration: const InputDecoration(
                             labelText: 'NÚMERO',
                             border: OutlineInputBorder(),
-                            hintText: '123',
+                            hintText: '1234',
                           ),
                         ),
                       ),
@@ -330,7 +295,7 @@ class PacienteModalState extends State<PacienteModal> {
                   Title(
                     color: cinza,
                     child: const Text(
-                      'INFOMAÇÕES DE SAÚDE',
+                      'INFOMAÇÕES DE EMPREGO',
                       style: estiloTitulo,
                     ),
                   ),
@@ -338,69 +303,61 @@ class PacienteModalState extends State<PacienteModal> {
                   // ESPACAMENTO
                   espacoVertical,
 
-                  // CAMPO DE ALTURA E PESO
+                  // CAMPO DE CARGO E TURNO
                   Row(
                     children: [
-                      // CAMPO DE ALTURA
+                      // CAMPO DE CARGO
+                      // CAMPO TURNOS
                       Expanded(
-                        child: TextFormField(
-                          controller: _alturaController,
-                          onChanged: _calcularIMC,
+                        child: DropdownButtonFormField<String>(
                           decoration: const InputDecoration(
-                            labelText: 'ALTURA',
+                            labelText: 'CARGO',
                             border: OutlineInputBorder(),
-                            hintText: '1.70',
                           ),
-                          keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                          value: _cargoController.text.isEmpty ? null : _cargoController.text,
+                          items: ['RECEPCIONISTA'].map((String valor) {
+                            return DropdownMenuItem<String>(
+                              value: valor,
+                              child: Text(valor),
+                            );
+                          }).toList(),
+                          onChanged: (novoValor) {
+                            setState(() {
+                              _cargoController.text = novoValor as String;
+                            });
+                          },
+                          isExpanded: true,
+                          hint: const Text('Selecione o cargo'),
                         ),
                       ),
 
                       // ESPACAMENTO
                       espacoHorizontal,
 
-                      // CAMPO DE PESO
+                      // CAMPO TURNOS
                       Expanded(
-                        child: TextFormField(
-                          controller: _pesoController,
-                          onChanged: _calcularIMC,
+                        child: DropdownButtonFormField<String>(
                           decoration: const InputDecoration(
-                            labelText: 'PESO',
+                            labelText: 'TURNO',
                             border: OutlineInputBorder(),
-                            hintText: '70',
                           ),
-                          keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                        ),
-                      ),
-
-                      // ESPACAMENTO
-                      espacoHorizontal,
-
-                      // CAMPO DE BMI
-                      Expanded(
-                        child: TextFormField(
-                          readOnly: true,
-                          controller: _imcController,
-                          decoration: const InputDecoration(
-                            labelText: 'Cálculo IMC',
-                            border: OutlineInputBorder(),
-                            hintText: 'Insira altura e peso',
-                          ),
+                          value: _turnoController.text.isEmpty ? null : _turnoController.text,
+                          items: ['// SELEÇÃO MULTIPLA'].map((String valor) {
+                            return DropdownMenuItem<String>(
+                              value: valor,
+                              child: Text(valor),
+                            );
+                          }).toList(),
+                          onChanged: (novoValor) {
+                            setState(() {
+                              _turnoController.text = novoValor as String;
+                            });
+                          },
+                          isExpanded: true,
+                          hint: const Text('Selecione os turnos'),
                         ),
                       ),
                     ],
-                  ),
-
-                  // ESPACAMENTO
-                  espacoVertical,
-
-                  // CAMPO DE MEDICAMENTOS
-                  TextFormField(
-                    controller: _medicamentosController,
-                    decoration: const InputDecoration(
-                      labelText: 'MEDICAMENTOS',
-                      border: OutlineInputBorder(),
-                      hintText: 'Paracetamol, Dipirona, etc...',
-                    ),
                   ),
                 ],
               ),
@@ -434,7 +391,7 @@ class PacienteModalState extends State<PacienteModal> {
             // BOTAO DE SALVAR
             ElevatedButton(
               onPressed: () {
-                _salvarPaciente();
+                _salvarFuncionario();
               },
               style: tamanhoBotao,
               child: const Text(

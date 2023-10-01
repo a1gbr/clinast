@@ -34,7 +34,7 @@ class _TabelaDinamicaState extends State<TabelaDinamica> {
               ).toList(),
               const DataColumn(
                 label: Text(
-                  'APAGAR',
+                  'AÇÕES',
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
               ),
@@ -53,15 +53,31 @@ class _TabelaDinamicaState extends State<TabelaDinamica> {
                       },
                     ).toList(),
                     DataCell(
-                      IconButton(
-                        icon: const Icon(Icons.delete),
-                        onPressed: () {
-                          // HANDLE DELETE CLICK
-
-                          setState(() {
-                            widget.itens.remove(linha);
-                          });
-                        },
+                      Row(
+                        children: [
+                          IconButton(
+                            icon: const Icon(Icons.visibility),
+                            onPressed: () {
+                              // HANDLE VIEW CLICK
+                            },
+                          ),
+                          IconButton(
+                            icon: const Icon(Icons.edit),
+                            onPressed: () {
+                              // HANDLE EDIT CLICK
+                            },
+                          ),
+                          IconButton(
+                            icon: const Icon(Icons.delete),
+                            onPressed: () {
+                              linha['ativo'] = false;
+                              // HANDLE DELETE CLICK
+                              setState(() {
+                                widget.itens.remove(linha);
+                              });
+                            },
+                          ),
+                        ],
                       ),
                     ),
                   ],
