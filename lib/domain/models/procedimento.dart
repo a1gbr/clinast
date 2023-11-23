@@ -16,6 +16,7 @@ class Procedimento {
   bool haConvenio;
   String? tipoConvenio;
   bool? retorno;
+  bool ativo = true;
 
   Procedimento({
     required this.medico,

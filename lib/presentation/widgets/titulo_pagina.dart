@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../screens/md_cadastro.dart';
 import 'shared/estilo_botao.dart';
 
 class TituloPagina extends StatelessWidget {
@@ -26,7 +25,7 @@ class TituloPagina extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
+              children: [
                 Text(
                   tituloPagina,
                   style: const TextStyle(
@@ -48,7 +47,7 @@ class TituloPagina extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Row(
-              children: <Widget>[
+              children: [
                 // BOTAO DE EXPORTAR
                 ElevatedButton(
                   style: estiloBotao,
@@ -75,29 +74,7 @@ class TituloPagina extends StatelessWidget {
                 // BOTAO DE ITEM NOVO
                 ElevatedButton(
                   style: estiloBotao,
-                  onPressed: () {
-                    showDialog<Form>(
-                      context: context,
-                      builder: (BuildContext context) {
-                        return AlertDialog(
-                          content:
-                              const ModalCadastro(), // Supondo que ModalCadastro seja um Widget
-                          actions: <Widget>[
-                            TextButton(
-                              onPressed: () {
-                                Navigator.of(context).pop();
-                              },
-                              child: const Text("CANCELAR"),
-                            ),
-                            TextButton(
-                              onPressed: () => {print("Pressionou")},
-                              child: const Text('CONFIRMAR'),
-                            ),
-                          ],
-                        );
-                      },
-                    );
-                  },
+                  onPressed: onNovoItem,
                   child: const Row(
                     children: [
                       Icon(

@@ -1,3 +1,4 @@
+import 'package:clinast/presentation/screens/modal/funcionario.dart';
 import 'package:flutter/material.dart';
 
 import '../widgets/tabela.dart';
@@ -30,7 +31,14 @@ class FuncionariosPage extends StatefulWidget {
 
 void handleExportarClick() {}
 
-void handleNovoItemClick() {}
+void handleNovoItemClick(BuildContext context) {
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return const FuncionarioModal();
+    },
+  );
+}
 
 class _FuncionariosPageState extends State<FuncionariosPage> {
   @override
@@ -39,11 +47,11 @@ class _FuncionariosPageState extends State<FuncionariosPage> {
       body: Column(
         children: <Widget>[
           // TITULO DA PAGINA
-          const TituloPagina(
+          TituloPagina(
             "FUNCIONÁRIOS",
             "Lista de funcionários:",
             onExportar: handleExportarClick,
-            onNovoItem: handleNovoItemClick,
+            onNovoItem: () => handleNovoItemClick(context),
           ),
 
           // ESPACAMENTO DO TITULO PRO CORPO

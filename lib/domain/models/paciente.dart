@@ -4,6 +4,7 @@ import 'shared/medicamento.dart';
 class Paciente extends Pessoa {
   double? altura;
   double? peso;
+  double? imc;
   List<Medicamento>? medicamentos;
 
   Paciente({
@@ -18,6 +19,7 @@ class Paciente extends Pessoa {
     this.altura,
     this.peso,
     this.medicamentos,
+    double? imc,
   }) : super(
           nome: nome,
           dataNascimento: dataNascimento,

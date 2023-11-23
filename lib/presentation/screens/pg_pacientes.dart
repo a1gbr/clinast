@@ -4,9 +4,8 @@ import '../../domain/models/paciente.dart';
 import '../widgets/tabela.dart';
 import '../widgets/titulo_pagina.dart';
 import '../widgets/toolbar.dart';
-import 'md_cadastro.dart';
+import 'modal/paciente.dart';
 
-// CRIA A LISTA DE TITULOS DAS COLUNAS
 final List<String> tituloColunas = [
   'NOME',
   'DATA NASC',
@@ -34,62 +33,34 @@ class PacientesPage extends StatefulWidget {
 
 void handleExportarClick() {}
 
-// HANDLER PRA CHAMAR O MODAL DE CADASTRO
 void handleNovoItemClick(BuildContext context) {
-  Navigator.of(context).push(
-    MaterialPageRoute(
-      builder: (context) => const ModalCadastro(),
-    ),
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return const PacienteModal();
+    },
   );
 }
 
 class _PacientesPageState extends State<PacientesPage> {
   List<Map<String, dynamic>> linhasMostraveis = [];
 
-  void handleSearch(String query) {
+  void handleSearch(String busca) {
     setState(() {
-      linhasMostraveis = widget.itens.map((paciente) {
-        final row = {
-          'NOME': paciente.nome,
-          'DATA NASC': paciente.data,
-          'CIDADE': paciente.cidade,
-          'CEP': paciente.cep,
-          'TELEFONE': paciente.telefone,
-          'ALTURA': paciente.altura,
-          'PESO': paciente.peso,
-          'MEDICAMENTOS': paciente.medicamentos,
-        };
-        return row;
-      }).where((row) {
-        final searchText = query.toLowerCase();
-        return row.values.any(
-            (value) => value.toString().toLowerCase().contains(searchText));
-      }).toList();
+      linhasMostraveis = filtroPaciente(busca);
     });
   }
 
   void handleClearSearch() {
     setState(() {
-      linhasMostraveis = widget.itens.map((paciente) {
-        final row = {
-          'NOME': paciente.nome,
-          'DATA NASC': paciente.data,
-          'CIDADE': paciente.cidade,
-          'CEP': paciente.cep,
-          'TELEFONE': paciente.telefone,
-          'ALTURA': paciente.altura,
-          'PESO': paciente.peso,
-          'MEDICAMENTOS': paciente.medicamentos,
-        };
-        return row;
-      }).toList();
+      linhasMostraveis = filtroPaciente('');
     });
   }
 
-  @override
-  void initState() {
-    linhasMostraveis = widget.itens.map((paciente) {
-      final row = {
+  List<Map<String, dynamic>> filtroPaciente(String busca) {
+    final textoPesquisa = busca.toLowerCase();
+    return widget.itens.map((paciente) {
+      final linha = {
         'NOME': paciente.nome,
         'DATA NASC': paciente.data,
         'CIDADE': paciente.cidade,
@@ -99,39 +70,36 @@ class _PacientesPageState extends State<PacientesPage> {
         'PESO': paciente.peso,
         'MEDICAMENTOS': paciente.medicamentos,
       };
-      return row;
+      return linha;
+    }).where((linha) {
+      return linha.values.any((valor) => valor.toString().toLowerCase().contains(textoPesquisa));
     }).toList();
+  }
+
+  @override
+  void initState() {
+    linhasMostraveis = filtroPaciente('');
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    // GERANDO BACK FALSO
-
     return Scaffold(
       body: Column(
         children: <Widget>[
-          // TITUTLO DA PAGINA
           TituloPagina(
             "PACIENTES",
             "Lista de pacientes:",
             onExportar: handleExportarClick,
-            // CHAMANDO FUNCAO Q EXIBE O MODAL DE CADASTRO
             onNovoItem: () => handleNovoItemClick(context),
           ),
-
-          // ESPACAMENTO DO TITULO PRO CORPO
           const SizedBox(height: 16),
-
-          // T00LBAR DE PESQUISA
           Toolbar(
             onSearch: handleSearch,
             onClearSearch: handleClearSearch,
           ),
-          // CORPO DA PAGINA
           Expanded(
             child: Center(
-              // CHAMANDO O WIDGET TABELA
               child: TabelaDinamica(
                 colunas: tituloColunas,
                 itens: linhasMostraveis,

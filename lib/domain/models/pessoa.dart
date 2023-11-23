@@ -18,6 +18,7 @@ class Pessoa {
   String telefone;
   String cpf;
   late final String hashedCPF;
+  bool ativo = true;
 
   Pessoa({
     required this.nome,

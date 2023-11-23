@@ -1,3 +1,4 @@
+import 'package:clinast/presentation/screens/modal/pagamentos.dart';
 import 'package:flutter/material.dart';
 
 import '../widgets/tabela.dart';
@@ -31,7 +32,14 @@ class PagamentosPage extends StatefulWidget {
 
 void handleExportarClick() {}
 
-void handleNovoItemClick() {}
+void handleNovoItemClick(BuildContext context) {
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return const PagamentoModal();
+    },
+  );
+}
 
 class _PagamentosPageState extends State<PagamentosPage> {
   @override
@@ -40,11 +48,11 @@ class _PagamentosPageState extends State<PagamentosPage> {
       body: Column(
         children: <Widget>[
           // TITULO DA PAGINA
-          const TituloPagina(
+          TituloPagina(
             "PAGAMENTOS",
             "Lista de pagamentos:",
             onExportar: handleExportarClick,
-            onNovoItem: handleNovoItemClick,
+            onNovoItem: () => handleNovoItemClick(context),
           ),
 
           // ESPACAMENTO DO TITULO PRO CORPO

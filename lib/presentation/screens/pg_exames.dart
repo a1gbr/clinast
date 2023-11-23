@@ -4,8 +4,8 @@ import '/domain/models/exame.dart';
 import '../widgets/tabela.dart';
 import '../widgets/titulo_pagina.dart';
 import '../widgets/toolbar.dart';
+import 'modal/exame.dart';
 
-// CRIA A LISTA DE TITULOS DAS COLUNAS
 final List<String> tituloColunas = [
   'PACIENTE',
   'MÉDICO',
@@ -26,63 +26,41 @@ class ExamesPage extends StatefulWidget {
   });
   final List<String> colunas;
   final List<Exame> itens;
+
   @override
   State<ExamesPage> createState() => _ExamesPageState();
 }
 
-void handleExportarClick() {}
-
-void handleNovoItemClick() {}
-
 class _ExamesPageState extends State<ExamesPage> {
   List<Map<String, dynamic>> linhasMostraveis = [];
 
-  void handleSearch(String query) {
+  void handleExportarClick() {}
+
+  void handleNovoItemClick(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return const ExameModal();
+      },
+    );
+  }
+
+  void handleSearch(String busca) {
     setState(() {
-      linhasMostraveis = widget.itens.map((exame) {
-        final row = {
-          'PACIENTE': exame.paciente,
-          'MÉDICO': exame.medico,
-          'TIPO': exame.tipoExame,
-          'SOLICITANTE': exame.solicitante,
-          'DATA': exame.data,
-          'HORA': exame.hora,
-          'VALOR': exame.valor,
-          'CONVÊNIO': exame.convenio,
-          'STATUS': exame.statusProcedimento,
-        };
-        return row;
-      }).where((row) {
-        final searchText = query.toLowerCase();
-        return row.values.any(
-            (value) => value.toString().toLowerCase().contains(searchText));
-      }).toList();
+      linhasMostraveis = filtroExame(busca);
     });
   }
 
   void handleClearSearch() {
     setState(() {
-      linhasMostraveis = widget.itens.map((exame) {
-        final row = {
-          'PACIENTE': exame.paciente,
-          'MÉDICO': exame.medico,
-          'TIPO': exame.tipoExame,
-          'SOLICITANTE': exame.solicitante,
-          'DATA': exame.data,
-          'HORA': exame.hora,
-          'VALOR': exame.valor,
-          'CONVÊNIO': exame.convenio,
-          'STATUS': exame.statusProcedimento,
-        };
-        return row;
-      }).toList();
+      linhasMostraveis = filtroExame('');
     });
   }
 
-  @override
-  void initState() {
-    linhasMostraveis = widget.itens.map((exame) {
-      final row = {
+  List<Map<String, dynamic>> filtroExame(String busca) {
+    final textoPesquisa = busca.toLowerCase();
+    return widget.itens.map((exame) {
+      final linha = {
         'PACIENTE': exame.paciente,
         'MÉDICO': exame.medico,
         'TIPO': exame.tipoExame,
@@ -93,8 +71,15 @@ class _ExamesPageState extends State<ExamesPage> {
         'CONVÊNIO': exame.convenio,
         'STATUS': exame.statusProcedimento,
       };
-      return row;
+      return linha;
+    }).where((linha) {
+      return linha.values.any((valor) => valor.toString().toLowerCase().contains(textoPesquisa));
     }).toList();
+  }
+
+  @override
+  void initState() {
+    linhasMostraveis = filtroExame('');
     super.initState();
   }
 
@@ -103,27 +88,19 @@ class _ExamesPageState extends State<ExamesPage> {
     return Scaffold(
       body: Column(
         children: <Widget>[
-          // TITULO DA PAGINA
-          const TituloPagina(
+          TituloPagina(
             "EXAMES",
             "Lista de exames:",
             onExportar: handleExportarClick,
-            onNovoItem: handleNovoItemClick,
+            onNovoItem: () => handleNovoItemClick(context),
           ),
-
-          // ESPACAMENTO DO TITULO PRO CORPO
           const SizedBox(height: 16),
-
-          // T00LBAR DE PESQUISA
           Toolbar(
             onSearch: handleSearch,
             onClearSearch: handleClearSearch,
           ),
-
-          // CORPO DA PAGINA
           Expanded(
             child: Center(
-              // CHAMANDO O WIDGET TABELA
               child: TabelaDinamica(
                 colunas: tituloColunas,
                 itens: linhasMostraveis,
