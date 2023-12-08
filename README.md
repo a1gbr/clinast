@@ -1,4 +1,4 @@
-# Aplicação para Registro e Controle de Clínicas | CLINAST
+# Aplicação para Gestão e Controle de Clínicas | CLINAST
 
 `PONTIFÍCIA UNIVERSIDADE CATÓLICA DE MINAS GERAIS`
 
